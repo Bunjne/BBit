@@ -42,12 +42,14 @@ kotlin {
             dependencies {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.core)
-                implementation(libs.ktor.cio)
+                //implementation(libs.ktor.cio)
+                implementation(libs.ktor.logging)
                 implementation(libs.ktor.negotiation)
                 implementation(libs.ktor.serilization)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
+                implementation(libs.koin.test)
                 //put your multiplatform dependencies here
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -81,10 +83,11 @@ kotlin {
         val iosMain by getting {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
             dependencies {
                 implementation(libs.koin.core)
+                implementation(libs.ktor.darwin)
                 implementation(libs.sqldelight.ios)
                 implementation("dev.icerock.moko:mvvm-core:$mokoMvvmVersion")
                 implementation("dev.icerock.moko:mvvm-flow:$mokoMvvmVersion")

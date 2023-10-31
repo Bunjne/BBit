@@ -36,7 +36,7 @@ googleOss = "17.0.1"
 googleOssPlugin = "0.10.6"
 hilt = "2.47"
 hiltExt = "1.0.0"
-koin = "3.3.3"
+koin = "3.5.0"
 koinCompose = "1.1.0"
 jacoco = "0.8.7"
 junit4 = "4.13.2"
@@ -145,6 +145,7 @@ ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor"
 ktor-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
 ktor-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
 ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serilization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 sqldelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }

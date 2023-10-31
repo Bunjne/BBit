@@ -28,9 +28,9 @@ open class BaseRepository {
                 message = apiException.error?.message
             )
         } catch (timeoutException: IOException) {
-            Error(NO_INTERNET_ERROR)
+            Error(statusCode = NO_INTERNET_ERROR, message = timeoutException.message)
         } catch (ex: Exception) {
-            Error(INTERNAL_ERROR)
+            Error(statusCode = INTERNAL_ERROR, message = ex.message)
         }
     }
 }
