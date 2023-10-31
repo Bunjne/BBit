@@ -13,8 +13,11 @@ class SpaceXRepositoryImpl(
 ) : BaseRepository(), SpaceXRepository {
 
     private val database = Database(databaseDriverFactory)
+
     override suspend fun getLaunches(): DataState<List<RocketLaunch>> {
-        val cachedLaunches = database.getAllLaunches()
+//        val cachedLaunches = database.getAllLaunches()
+        val cachedLaunches = listOf<RocketLaunch>()
+
         return execute {
             cachedLaunches.ifEmpty {
                 api.getAllLaunches().also {

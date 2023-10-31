@@ -75,8 +75,8 @@ dependencies {
     implementation(libs.androidx.ui.graphics.android)
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.ext.compiler)*/
-    implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation(libs.koin.compose)
 
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.window.manager)

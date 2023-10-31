@@ -1,9 +1,9 @@
 package com.bunjne.bbit.data.remote.service
 
 import com.bunjne.bbit.data.local.entity.RocketLaunch
+import com.bunjne.bbit.data.remote.ApiEndpoints.SPACEX_URL
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.serialization.kotlinx.json.json
@@ -16,6 +16,6 @@ interface SpaceXApi {
 class SpaceXApiImpl(private val httpClient: HttpClient) : SpaceXApi {
 
     override suspend fun getAllLaunches(): List<RocketLaunch> {
-        return httpClient.get("https://api.spacexdata.com/v5/launches").body()
+        return httpClient.get("${SPACEX_URL}launches").body()
     }
 }
