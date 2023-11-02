@@ -55,12 +55,13 @@ kotlin {
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
+                implementation(libs.accompanist.system.ui.controller)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
 
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt")
-                api("dev.icerock.moko:mvvm-core:$mokoMvvmVersion")
-                api("dev.icerock.moko:mvvm-flow:$mokoMvvmVersion")
+                implementation(libs.kotlinx.coroutines.core)
+                api(libs.mvvm.core)
+                api(libs.mvvm.flow)
             }
         }
         val commonTest by getting {
@@ -73,8 +74,9 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.okhttp)
                 implementation(libs.sqldelight.android)
-                implementation("io.insert-koin:koin-androidx-compose:3.4.2")
-                api("dev.icerock.moko:mvvm-flow-compose:$mokoMvvmVersion")
+                implementation(libs.koin.compose)
+                implementation(libs.koin.androidx.compose)
+                api(libs.mvvm.flow.compose)
             }
         }
         val iosX64Main by getting
@@ -89,8 +91,8 @@ kotlin {
                 implementation(libs.koin.core)
                 implementation(libs.ktor.darwin)
                 implementation(libs.sqldelight.ios)
-                implementation("dev.icerock.moko:mvvm-core:$mokoMvvmVersion")
-                implementation("dev.icerock.moko:mvvm-flow:$mokoMvvmVersion")
+                implementation(libs.mvvm.core)
+                implementation(libs.mvvm.flow)
             }
         }
     }

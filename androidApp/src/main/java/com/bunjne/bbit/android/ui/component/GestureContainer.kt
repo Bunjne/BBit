@@ -1,36 +1,19 @@
 package com.bunjne.bbit.android.ui.component
 
-import android.graphics.drawable.Icon
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -43,31 +26,26 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.bunjne.bbit.android.data.CircleUIState
 import com.bunjne.bbit.android.data.PlanetType
 import com.bunjne.bbit.android.data.PlanetUIState
-import com.bunjne.bbit.android.ui.theme.Blue100
-import com.bunjne.bbit.android.ui.theme.Pink40
-import com.bunjne.bbit.android.ui.theme.Purple40
-import com.bunjne.bbit.android.ui.theme.Purple80
-import com.bunjne.bbit.android.ui.theme.PurpleGrey40
-import com.bunjne.bbit.android.ui.theme.PurpleGrey80
+import com.example.compose.md_theme_dark_onPrimary
+import com.example.compose.md_theme_dark_onSecondary
+import com.example.compose.md_theme_dark_primary
+import com.example.compose.md_theme_dark_secondary
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
 
 @Composable
 fun Gesture() {
     val colorList = remember {
-        mutableListOf(Purple80, PurpleGrey80, Purple40, Pink40, PurpleGrey40, Pink40)
+        mutableListOf(md_theme_dark_onPrimary, md_theme_dark_primary, md_theme_dark_secondary, md_theme_dark_onSecondary)
     }
+
     val planets = remember {
         mutableListOf(
             PlanetUIState(

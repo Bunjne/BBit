@@ -1,4 +1,4 @@
-package com.bunjne.bbit.presentation.launches
+package com.bunjne.bbit.ui.launches
 
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.data.local.entity.RocketLaunch
@@ -11,9 +11,10 @@ import kotlinx.coroutines.launch
 
 class LaunchesViewModel(
     private val spaceXRepository: SpaceXRepository
-): ViewModel() {
+) : ViewModel() {
 
-    private val _launchesViewState = MutableStateFlow<ViewState<List<RocketLaunch>>>(ViewState.Loading)
+    private val _launchesViewState =
+        MutableStateFlow<ViewState<List<RocketLaunch>>>(ViewState.Loading)
     val launchesViewState = _launchesViewState.asStateFlow()
 
     fun getLaunches() {
@@ -22,8 +23,10 @@ class LaunchesViewModel(
                 is DataState.Success -> {
                     _launchesViewState.value = ViewState.Success(launches.data ?: emptyList())
                 }
-                else -> {
-                    _launchesViewState.value = ViewState.Error("To be handled")
+
+                is DataState.Error -> {
+                    _launchesViewState.value =
+                        ViewState.Error(launches.statusCode, launches.message)
                 }
             }
         }

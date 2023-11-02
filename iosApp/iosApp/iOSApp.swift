@@ -8,7 +8,22 @@ struct iOSApp: App {
     }
 	var body: some Scene {
 		WindowGroup {
-			ContentView()
+		GeometryReader { geo in
+		    ComposeView(
+		    topSafeArea: Float(geo.safeAreaInsets.top),
+		    bottomSafeArea: Float(geo.safeAreaInsets.bottom)
+		    )
+		    .edgesIgnoringSafeArea(.all)
+//                        ComposeViewController(
+//                            ...,
+//                            topSafeArea: Float(geo.safeAreaInsets.top),
+//                            bottomSafeArea: Float(geo.safeAreaInsets.bottom)
+//                         )
+//                         ContentView()
+//                         .edgesIgnoringSafeArea(.all)
+//                     }
+// 			ContentView()
+		}
 		}
 	}
 }
