@@ -6,9 +6,9 @@ androidxActivity = "1.8.0-alpha06"
 androidxAppCompat = "1.5.1"
 androidxBrowser = "1.4.0"
 androidxComposeBom = "2023.06.01"
-androidxComposeCompiler = "1.5.3"
+androidxComposeCompiler = "1.5.10"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
-androidxCore = "1.9.0"
+androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.0"
 androidxDataStore = "1.0.0"
 androidxEspresso = "3.5.0"
@@ -28,6 +28,7 @@ androidxUiAutomator = "2.2.0"
 androidxWindowManager = "1.0.0"
 androidxWork = "2.9.0-alpha01"
 coil = "2.2.2"
+composeWebviewMultiplatform = "1.5.0"
 firebaseBom = "31.2.0"
 firebaseCrashlyticsPlugin = "2.9.2"
 firebasePerfPlugin = "1.4.2"
@@ -39,16 +40,21 @@ hiltExt = "1.0.0"
 koin = "3.5.0"
 koinCompose = "1.1.0"
 jacoco = "0.8.7"
+jetbrainsCompose = "1.5.12"
 junit4 = "4.13.2"
-kotlin = "1.9.10"
+kotlin = "1.9.22"
 cocoapods = "1.9.10"
 kotlinxCoroutines = "1.7.1"
 kotlinxDatetime = "0.4.0"
 kotlinxSerializationJson = "1.5.1"
 ksp = "1.9.0-1.0.11"
+ktor = "2.3.7"
 lint = "31.0.2"
-material3 = "1.1.1"
-mokoMvvmVersion = "0.13.0"
+material3 = "1.1.2"
+mokoMvvmVersion = "0.16.0"
+multiplatformSettings = "1.1.1"
+multiplatformSettingsDatastore = "1.1.1"
+napier = "2.7.1"
 okhttp = "4.10.0"
 protobuf = "3.23.4"
 protobufPlugin = "0.9.3"
@@ -56,9 +62,9 @@ retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "1.0.0"
 room = "2.5.2"
 secrets = "2.0.1"
-turbine = "0.12.1"
-ktor = "2.3.5"
 sqlDelight = "2.0.0"
+turbine = "0.12.1"
+voyager = "1.0.0"
 
 [libraries]
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
@@ -108,6 +114,7 @@ androidx-work-testing = { group = "androidx.work", name = "work-testing", versio
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 coil-kt-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+compose-webview-multiplatform = { module = "io.github.kevinnzou:compose-webview-multiplatform", version.ref = "composeWebviewMultiplatform" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-cloud-messaging = { group = "com.google.firebase", name = "firebase-messaging-ktx" }
@@ -135,9 +142,12 @@ kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "lint" }
+multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
+mvvm-compose = { module = "dev.icerock.moko:mvvm-compose", version.ref = "mokoMvvmVersion" }
 mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
 mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mokoMvvmVersion" }
 mvvm-flow-compose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mokoMvvmVersion" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
 protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
@@ -154,8 +164,15 @@ ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serilization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-auth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor" }
 sqldelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
 sqldelight-ios = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqlDelight" }
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -163,12 +180,12 @@ firebase-crashlytics-gradlePlugin = { group = "com.google.firebase", name = "fir
 firebase-performance-gradlePlugin = { group = "com.google.firebase", name = "perf-plugin", version.ref = "firebasePerfPlugin" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
-androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "1.5.2" }
+androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "androidUiGraphics" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "androidxComposeCompiler" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrainsCompose" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebaseCrashlyticsPlugin" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "firebasePerfPlugin" }

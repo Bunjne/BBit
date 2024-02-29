@@ -1,8 +1,8 @@
 package com.bunjne.bbit.data.repository
 
 import com.bunjne.bbit.data.DataState
-import com.bunjne.bbit.data.DataState.Success
 import com.bunjne.bbit.data.DataState.Error
+import com.bunjne.bbit.data.DataState.Success
 import com.bunjne.bbit.data.remote.StatusCode.INTERNAL_ERROR
 import com.bunjne.bbit.data.remote.StatusCode.NO_INTERNET_ERROR
 import com.bunjne.bbit.data.remote.error.ApiException
@@ -30,6 +30,7 @@ open class BaseRepository {
         } catch (timeoutException: IOException) {
             Error(statusCode = NO_INTERNET_ERROR, message = timeoutException.message)
         } catch (ex: Exception) {
+
             Error(statusCode = INTERNAL_ERROR, message = ex.message)
         }
     }

@@ -5,7 +5,7 @@ import com.bunjne.bbit.data.local.database.Database
 import com.bunjne.bbit.data.local.database.DatabaseDriverFactory
 import com.bunjne.bbit.data.local.entity.RocketLaunch
 import com.bunjne.bbit.data.remote.service.SpaceXApi
-import com.bunjne.bbit.usecase.repository.SpaceXRepository
+import com.bunjne.bbit.domain.repository.SpaceXRepository
 
 class SpaceXRepositoryImpl(
     databaseDriverFactory: DatabaseDriverFactory,

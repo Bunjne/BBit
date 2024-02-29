@@ -21,7 +21,7 @@ kotlin {
 
     targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class.java).all {
         binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class.java).all {
-            export("dev.icerock.moko:mvvm-core:0.16.1")
+            export(libs.mvvm.core)
         }
     }
 
@@ -37,15 +37,15 @@ kotlin {
     }
 
     sourceSets {
-        val mokoMvvmVersion = "0.13.0"
         val commonMain by getting {
             dependencies {
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.ktor.core)
-                //implementation(libs.ktor.cio)
+                implementation(libs.ktor.cio)
                 implementation(libs.ktor.logging)
                 implementation(libs.ktor.negotiation)
                 implementation(libs.ktor.serilization)
+                implementation(libs.ktor.auth)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
@@ -60,8 +60,23 @@ kotlin {
                 implementation(compose.components.resources)
 
                 implementation(libs.kotlinx.coroutines.core)
+                api(libs.mvvm.compose)
                 api(libs.mvvm.core)
                 api(libs.mvvm.flow)
+
+                implementation(libs.voyager.navigator)
+                implementation(libs.voyager.screenModel)
+                implementation(libs.voyager.bottomSheetNavigator)
+                implementation(libs.voyager.tabNavigator)
+                implementation(libs.voyager.koin)
+                implementation(libs.voyager.transitions)
+
+                implementation(libs.napier)
+
+
+                // use api since the desktop app need to access the Cef to initialize it.
+                api(libs.compose.webview.multiplatform)
+                implementation(libs.multiplatform.settings)
             }
         }
         val commonTest by getting {
@@ -77,6 +92,7 @@ kotlin {
                 implementation(libs.koin.compose)
                 implementation(libs.koin.androidx.compose)
                 api(libs.mvvm.flow.compose)
+//                implementation(libs.androidx.core)
             }
         }
         val iosX64Main by getting
@@ -116,12 +132,4 @@ sqldelight {
             packageName.set("com.bunjne.bbit")
         }
     }
-}
-
-dependencies {
-    implementation("androidx.core:core:1.10.1")
-    commonMainApi("dev.icerock.moko:mvvm-core:0.16.1")
-    commonMainApi("dev.icerock.moko:mvvm-compose:0.16.1")
-    commonMainApi("dev.icerock.moko:mvvm-flow:0.16.1")
-    commonMainApi("dev.icerock.moko:mvvm-flow-compose:0.16.1")
 }

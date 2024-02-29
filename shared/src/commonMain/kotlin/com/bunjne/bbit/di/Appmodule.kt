@@ -13,6 +13,8 @@ private fun appModule() = module {
             ignoreUnknownKeys = true
             explicitNulls = false
             encodeDefaults = true
+            prettyPrint = true
+            isLenient = true
         }
     }
 
