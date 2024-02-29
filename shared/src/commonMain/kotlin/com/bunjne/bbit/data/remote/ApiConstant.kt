@@ -27,6 +27,8 @@ object ApiEndpoints {
     const val SPACEX_URL = "https://api.spacexdata.com/v5/"
     const val BASE_URL = "https://api.bitbucket.org/2.0/"
     const val AUTH_BASE_URL = "https://bitbucket.org/site/oauth2/"
-    const val BITBUCKET_CLIENT_ID = "\"YW5N4Zsq76DyKRrBHj\""
-    const val BITBUCKET_CLIENT_KEY = "\"FBd57pSKYgwRRUxyjFdfCgNMXg8ddxy7\""
+    //    const val AUTH_BASE_URL = "http://10.0.2.2:3001"
+    const val BITBUCKET_CLIENT_ID = "YW5N4Zsq76DyKRrBHj"
+    const val AUTHORIZATION_CODE = "authorization_code"
+    const val BITBUCKET_CLIENT_KEY = "FBd57pSKYgwRRUxyjFdfCgNMXg8ddxy7"
 }

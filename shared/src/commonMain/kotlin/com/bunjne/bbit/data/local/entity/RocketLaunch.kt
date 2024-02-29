@@ -1,8 +1,5 @@
 package com.bunjne.bbit.data.local.entity
 
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toInstant
-import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,7 +16,7 @@ data class RocketLaunch(
     @SerialName("links")
     val links: Links
 ) {
-    var launchYear = launchDateUTC.toInstant().toLocalDateTime(TimeZone.UTC).year
+    //var launchYear = launchDateUTC.toInstant().toLocalDateTime(TimeZone.UTC).year
 }
 
 @Serializable
