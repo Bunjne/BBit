@@ -2,6 +2,8 @@ package com.bunjne.bbit.ui.login
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -38,7 +40,12 @@ fun LoginScreen(
         }
     }
 
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .safeDrawingPadding()
+            .statusBarsPadding()
+    ) {
         PlatformWebView(
             modifier = Modifier.fillMaxSize(),
             url = WEB_VIEW_URL,
