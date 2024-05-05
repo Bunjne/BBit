@@ -4,12 +4,12 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
 import com.bunjne.bbit.ui.workspaceList.WorkspaceListViewModel
-import com.bunjne.bbit.ui.workspaceList.WorkspaceScreen
+import com.bunjne.bbit.ui.workspaceList.WorkspacesView
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
 import org.koin.compose.koinInject
 
-class WorkspaceListScreenNav: Screen {
+class WorkspaceListScreenNav : Screen {
 
     @Composable
     override fun Content() {
@@ -21,6 +21,6 @@ class WorkspaceListScreenNav: Screen {
             }
         )
 
-        WorkspaceScreen(viewModel)
+        WorkspacesView(viewModel)
     }
 }

@@ -1,10 +1,8 @@
 package com.bunjne.bbit
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -30,7 +28,8 @@ fun App(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
-                    .windowInsetsPadding(WindowInsets.statusBars),
+                    .imePadding(),
+//                    .windowInsetsPadding(WindowInsets.statusBars),
 //                    .padding(top = topSafeArea.dp, bottom = bottomSafeArea.dp),
                 color = MaterialTheme.colorScheme.background
             ) {
