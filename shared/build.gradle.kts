@@ -36,6 +36,11 @@ kotlin {
         }
     }
 
+    android.libraryVariants.all {
+        this.javaCompile.destinationDirectory
+        this.javaCompileProvider.get().destinationDirectory
+    }
+
     sourceSets {
         val commonMain by getting {
             dependencies {
