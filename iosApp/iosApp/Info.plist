@@ -44,5 +44,10 @@
 	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
+	<key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+    </dict>
 </dict>
 </plist>
