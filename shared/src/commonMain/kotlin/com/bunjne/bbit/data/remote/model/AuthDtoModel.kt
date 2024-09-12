@@ -1,20 +1,18 @@
 package com.bunjne.bbit.data.remote.model
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonNames
 
 @Serializable
 data class AuthDtoModel(
-    @JsonNames("access_token")
+    @SerialName("access_token")
     val accessToken: String,
-    @JsonNames("scopes")
+    @SerialName("scopes")
     val scopes: String,
-    @JsonNames("token_type")
+    @SerialName("token_type")
     val tokenType: String,
-    @JsonNames("expires_in")
+    @SerialName("expires_in")
     val expiresIn: Long,
-    @JsonNames("state")
-    val state: String,
-    @JsonNames("refresh_token")
+    @SerialName("refresh_token")
     val refreshToken: String
 )
