@@ -44,67 +44,11 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Gesture()
-    val list = listOf(text, "Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
-    LazyColumn(
-        modifier = Modifier
-            .wrapContentSize(),
-        contentPadding = PaddingValues(28.dp),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-//        item {
-//            CircleFlowAnimation()
-//        }
-//        item {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-//                ProgressLoader()
-//            }
-//        }
-//        items(
-//            count = list.size
-//        ) {
-//            Text(
-//                text = text,
-//                fontSize = 40.sp
-//            )
-//        }
-    }
-}
-
-@Composable
-fun CircleFlowAnimation() {
-    val infiniteTransition = rememberInfiniteTransition(label = "")
-    val radius = infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 200f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1000),
-            repeatMode = RepeatMode.Reverse,
-            initialStartOffset = StartOffset(1000)
-        ),
-        label = ""
-    )
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight(), contentAlignment = Alignment.Center
-    ) {
-        Box(modifier = Modifier.drawBehind {
-            drawCircle(Color.Black, radius = radius.value)
-        })
-//        Box(modifier = Modifier.size(radius.value.dp).clip(CircleShape).background(Color.Blue))
-    }
-}
-
 @Preview
 @Composable
 fun DefaultPreview() {
     BBitTheme(
         darkTheme = true,
         dynamicColor = true
-    ) {
-    }
+    ) {}
 }

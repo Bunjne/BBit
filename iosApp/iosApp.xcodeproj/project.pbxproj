@@ -11,6 +11,84 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		6904B22F2AEE98F700F73C56 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6904B22E2AEE98F700F73C56 /* ComposeView.swift */; };
+		699DC9D52C931E7B00CE6ADC /* RepositoryListScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC95E2C931E7B00CE6ADC /* RepositoryListScreen.kt */; };
+		699DC9D62C931E7B00CE6ADC /* LaunchesScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9602C931E7B00CE6ADC /* LaunchesScreen.kt */; };
+		699DC9D72C931E7B00CE6ADC /* LaunchesUIState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9612C931E7B00CE6ADC /* LaunchesUIState.kt */; };
+		699DC9D82C931E7B00CE6ADC /* LaunchesUIEvent.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9622C931E7B00CE6ADC /* LaunchesUIEvent.kt */; };
+		699DC9D92C931E7B00CE6ADC /* LaunchesViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9632C931E7B00CE6ADC /* LaunchesViewModel.kt */; };
+		699DC9DA2C931E7B00CE6ADC /* LaunchDetail.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9652C931E7B00CE6ADC /* LaunchDetail.kt */; };
+		699DC9DB2C931E7B00CE6ADC /* WorkspacesUiEvent.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9672C931E7B00CE6ADC /* WorkspacesUiEvent.kt */; };
+		699DC9DC2C931E7B00CE6ADC /* WorkspacesUiState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9682C931E7B00CE6ADC /* WorkspacesUiState.kt */; };
+		699DC9DD2C931E7B00CE6ADC /* WorkspacesUiAction.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9692C931E7B00CE6ADC /* WorkspacesUiAction.kt */; };
+		699DC9DE2C931E7B00CE6ADC /* WorkspaceListViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC96A2C931E7B00CE6ADC /* WorkspaceListViewModel.kt */; };
+		699DC9DF2C931E7B00CE6ADC /* WorkspaceListScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC96B2C931E7B00CE6ADC /* WorkspaceListScreen.kt */; };
+		699DC9E02C931E7B00CE6ADC /* WorkspaceListScreenNav.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC96D2C931E7B00CE6ADC /* WorkspaceListScreenNav.kt */; };
+		699DC9E12C931E7B00CE6ADC /* LaunchesScreenNav.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC96E2C931E7B00CE6ADC /* LaunchesScreenNav.kt */; };
+		699DC9E22C931E7B00CE6ADC /* RepositoryListScreenNav.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC96F2C931E7B00CE6ADC /* RepositoryListScreenNav.kt */; };
+		699DC9E32C931E7B00CE6ADC /* LoginScreenNav.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9702C931E7B00CE6ADC /* LoginScreenNav.kt */; };
+		699DC9E42C931E7B00CE6ADC /* LaunchDetailScreenNav.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9712C931E7B00CE6ADC /* LaunchDetailScreenNav.kt */; };
+		699DC9E52C931E7B00CE6ADC /* ProgressLoader.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9732C931E7B00CE6ADC /* ProgressLoader.kt */; };
+		699DC9E62C931E7B00CE6ADC /* Toolbar.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9742C931E7B00CE6ADC /* Toolbar.kt */; };
+		699DC9E72C931E7B00CE6ADC /* GeneralDialog.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9752C931E7B00CE6ADC /* GeneralDialog.kt */; };
+		699DC9E82C931E7B00CE6ADC /* FullScreenLoadingDialog.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9762C931E7B00CE6ADC /* FullScreenLoadingDialog.kt */; };
+		699DC9E92C931E7B00CE6ADC /* GeneralViewContainer.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9772C931E7B00CE6ADC /* GeneralViewContainer.kt */; };
+		699DC9EA2C931E7B00CE6ADC /* PlatformWebView.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9782C931E7B00CE6ADC /* PlatformWebView.kt */; };
+		699DC9EB2C931E7B00CE6ADC /* Shape.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC97A2C931E7B00CE6ADC /* Shape.kt */; };
+		699DC9EC2C931E7B00CE6ADC /* Color.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC97B2C931E7B00CE6ADC /* Color.kt */; };
+		699DC9ED2C931E7B00CE6ADC /* Style.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC97C2C931E7B00CE6ADC /* Style.kt */; };
+		699DC9EE2C931E7B00CE6ADC /* Theme.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC97D2C931E7B00CE6ADC /* Theme.kt */; };
+		699DC9EF2C931E7B00CE6ADC /* BBitTheme.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC97E2C931E7B00CE6ADC /* BBitTheme.kt */; };
+		699DC9F02C931E7B00CE6ADC /* LoginViewModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9802C931E7B00CE6ADC /* LoginViewModel.kt */; };
+		699DC9F12C931E7B00CE6ADC /* LoginUIState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9812C931E7B00CE6ADC /* LoginUIState.kt */; };
+		699DC9F22C931E7B00CE6ADC /* LoginScreen.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9822C931E7B00CE6ADC /* LoginScreen.kt */; };
+		699DC9F32C931E7B00CE6ADC /* LoginUIEvent.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9832C931E7B00CE6ADC /* LoginUIEvent.kt */; };
+		699DC9F42C931E7B00CE6ADC /* App.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9842C931E7B00CE6ADC /* App.kt */; };
+		699DC9F52C931E7B00CE6ADC /* Datamodule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9862C931E7B00CE6ADC /* Datamodule.kt */; };
+		699DC9F62C931E7B00CE6ADC /* Appmodule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9872C931E7B00CE6ADC /* Appmodule.kt */; };
+		699DC9F72C931E7B00CE6ADC /* ApiModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9882C931E7B00CE6ADC /* ApiModule.kt */; };
+		699DC9F82C931E7B00CE6ADC /* CommonDataModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9892C931E7B00CE6ADC /* CommonDataModule.kt */; };
+		699DC9F92C931E7B00CE6ADC /* RepositoryModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC98A2C931E7B00CE6ADC /* RepositoryModule.kt */; };
+		699DC9FA2C931E7B00CE6ADC /* UsecaseModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC98B2C931E7B00CE6ADC /* UsecaseModule.kt */; };
+		699DC9FB2C931E7B00CE6ADC /* ViewModelModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC98C2C931E7B00CE6ADC /* ViewModelModule.kt */; };
+		699DC9FC2C931E7B00CE6ADC /* TransitionExt.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC98E2C931E7B00CE6ADC /* TransitionExt.kt */; };
+		699DC9FD2C931E7B00CE6ADC /* Broadcaster.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9902C931E7B00CE6ADC /* Broadcaster.kt */; };
+		699DC9FE2C931E7B00CE6ADC /* LoginRepositoryImpl.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9932C931E7B00CE6ADC /* LoginRepositoryImpl.kt */; };
+		699DC9FF2C931E7B00CE6ADC /* SpaceXRepositoryImpl.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9942C931E7B00CE6ADC /* SpaceXRepositoryImpl.kt */; };
+		699DCA002C931E7B00CE6ADC /* BaseRepository.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9952C931E7B00CE6ADC /* BaseRepository.kt */; };
+		699DCA012C931E7B00CE6ADC /* WorkspaceRepositoryImpl.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9962C931E7B00CE6ADC /* WorkspaceRepositoryImpl.kt */; };
+		699DCA022C931E7B00CE6ADC /* AuthDataStore.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9982C931E7B00CE6ADC /* AuthDataStore.kt */; };
+		699DCA032C931E7B00CE6ADC /* DefaultAuthDataStore.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9992C931E7B00CE6ADC /* DefaultAuthDataStore.kt */; };
+		699DCA042C931E7B00CE6ADC /* DatabaseDriverFactory.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC99C2C931E7B00CE6ADC /* DatabaseDriverFactory.kt */; };
+		699DCA052C931E7B00CE6ADC /* Database.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC99D2C931E7B00CE6ADC /* Database.kt */; };
+		699DCA062C931E7B00CE6ADC /* RocketLaunch.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC99F2C931E7B00CE6ADC /* RocketLaunch.kt */; };
+		699DCA072C931E7B00CE6ADC /* PreferenceDataStore.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A12C931E7B00CE6ADC /* PreferenceDataStore.kt */; };
+		699DCA082C931E7B00CE6ADC /* AuthToken.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A32C931E7B00CE6ADC /* AuthToken.kt */; };
+		699DCA092C931E7B00CE6ADC /* DataState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A42C931E7B00CE6ADC /* DataState.kt */; };
+		699DCA0A2C931E7B00CE6ADC /* DefaultBearerAuthProvider.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A72C931E7B00CE6ADC /* DefaultBearerAuthProvider.kt */; };
+		699DCA0B2C931E7B00CE6ADC /* ApiConstant.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A82C931E7B00CE6ADC /* ApiConstant.kt */; };
+		699DCA0C2C931E7B00CE6ADC /* HttpClientProvider.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9A92C931E7B00CE6ADC /* HttpClientProvider.kt */; };
+		699DCA0D2C931E7B00CE6ADC /* LinkDto.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9AB2C931E7B00CE6ADC /* LinkDto.kt */; };
+		699DCA0E2C931E7B00CE6ADC /* WorkspaceDtoModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9AC2C931E7B00CE6ADC /* WorkspaceDtoModel.kt */; };
+		699DCA0F2C931E7B00CE6ADC /* AuthDtoModel.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9AD2C931E7B00CE6ADC /* AuthDtoModel.kt */; };
+		699DCA102C931E7B00CE6ADC /* WorkspaceService.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9AF2C931E7B00CE6ADC /* WorkspaceService.kt */; };
+		699DCA112C931E7B00CE6ADC /* SpaceXApi.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B02C931E7B00CE6ADC /* SpaceXApi.kt */; };
+		699DCA122C931E7B00CE6ADC /* LoginService.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B12C931E7B00CE6ADC /* LoginService.kt */; };
+		699DCA132C931E7B00CE6ADC /* ApiExceptionBody.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B32C931E7B00CE6ADC /* ApiExceptionBody.kt */; };
+		699DCA142C931E7B00CE6ADC /* SpaceXRepository.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B62C931E7B00CE6ADC /* SpaceXRepository.kt */; };
+		699DCA152C931E7B00CE6ADC /* WorkspaceRepository.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B72C931E7B00CE6ADC /* WorkspaceRepository.kt */; };
+		699DCA162C931E7B00CE6ADC /* LoginRepository.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B82C931E7B00CE6ADC /* LoginRepository.kt */; };
+		699DCA172C931E7B00CE6ADC /* UIComponent.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9B92C931E7B00CE6ADC /* UIComponent.kt */; };
+		699DCA182C931E7B00CE6ADC /* ProgressBarState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9BA2C931E7B00CE6ADC /* ProgressBarState.kt */; };
+		699DCA192C931E7B00CE6ADC /* ViewState.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9BC2C931E7B00CE6ADC /* ViewState.kt */; };
+		699DCA1A2C931E7B00CE6ADC /* GetLaunchesUseCase.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9BD2C931E7B00CE6ADC /* GetLaunchesUseCase.kt */; };
+		699DCA1B2C931E7B00CE6ADC /* AppDatabase.sq in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9C02C931E7B00CE6ADC /* AppDatabase.sq */; };
+		699DCA1C2C931E7B00CE6ADC /* GeneralDialog.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9C82C931E7B00CE6ADC /* GeneralDialog.kt */; };
+		699DCA1D2C931E7B00CE6ADC /* PlatformWebView.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9C92C931E7B00CE6ADC /* PlatformWebView.kt */; };
+		699DCA1E2C931E7B00CE6ADC /* BBitTheme.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9CB2C931E7B00CE6ADC /* BBitTheme.kt */; };
+		699DCA1F2C931E7B00CE6ADC /* Datamodule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9CD2C931E7B00CE6ADC /* Datamodule.kt */; };
+		699DCA202C931E7B00CE6ADC /* ViewModelModule.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9CE2C931E7B00CE6ADC /* ViewModelModule.kt */; };
+		699DCA212C931E7B00CE6ADC /* DatabaseDriverFactory.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9D22C931E7B00CE6ADC /* DatabaseDriverFactory.kt */; };
+		699DCA222C931E7B00CE6ADC /* PreferenceDataStoreBuilder.kt in Resources */ = {isa = PBXBuildFile; fileRef = 699DC9D42C931E7B00CE6ADC /* PreferenceDataStoreBuilder.kt */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +110,84 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		6904B22E2AEE98F700F73C56 /* ComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
+		699DC95E2C931E7B00CE6ADC /* RepositoryListScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoryListScreen.kt; sourceTree = "<group>"; };
+		699DC9602C931E7B00CE6ADC /* LaunchesScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchesScreen.kt; sourceTree = "<group>"; };
+		699DC9612C931E7B00CE6ADC /* LaunchesUIState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchesUIState.kt; sourceTree = "<group>"; };
+		699DC9622C931E7B00CE6ADC /* LaunchesUIEvent.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchesUIEvent.kt; sourceTree = "<group>"; };
+		699DC9632C931E7B00CE6ADC /* LaunchesViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchesViewModel.kt; sourceTree = "<group>"; };
+		699DC9652C931E7B00CE6ADC /* LaunchDetail.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchDetail.kt; sourceTree = "<group>"; };
+		699DC9672C931E7B00CE6ADC /* WorkspacesUiEvent.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspacesUiEvent.kt; sourceTree = "<group>"; };
+		699DC9682C931E7B00CE6ADC /* WorkspacesUiState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspacesUiState.kt; sourceTree = "<group>"; };
+		699DC9692C931E7B00CE6ADC /* WorkspacesUiAction.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspacesUiAction.kt; sourceTree = "<group>"; };
+		699DC96A2C931E7B00CE6ADC /* WorkspaceListViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceListViewModel.kt; sourceTree = "<group>"; };
+		699DC96B2C931E7B00CE6ADC /* WorkspaceListScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceListScreen.kt; sourceTree = "<group>"; };
+		699DC96D2C931E7B00CE6ADC /* WorkspaceListScreenNav.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceListScreenNav.kt; sourceTree = "<group>"; };
+		699DC96E2C931E7B00CE6ADC /* LaunchesScreenNav.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchesScreenNav.kt; sourceTree = "<group>"; };
+		699DC96F2C931E7B00CE6ADC /* RepositoryListScreenNav.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoryListScreenNav.kt; sourceTree = "<group>"; };
+		699DC9702C931E7B00CE6ADC /* LoginScreenNav.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginScreenNav.kt; sourceTree = "<group>"; };
+		699DC9712C931E7B00CE6ADC /* LaunchDetailScreenNav.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LaunchDetailScreenNav.kt; sourceTree = "<group>"; };
+		699DC9732C931E7B00CE6ADC /* ProgressLoader.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ProgressLoader.kt; sourceTree = "<group>"; };
+		699DC9742C931E7B00CE6ADC /* Toolbar.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Toolbar.kt; sourceTree = "<group>"; };
+		699DC9752C931E7B00CE6ADC /* GeneralDialog.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GeneralDialog.kt; sourceTree = "<group>"; };
+		699DC9762C931E7B00CE6ADC /* FullScreenLoadingDialog.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FullScreenLoadingDialog.kt; sourceTree = "<group>"; };
+		699DC9772C931E7B00CE6ADC /* GeneralViewContainer.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GeneralViewContainer.kt; sourceTree = "<group>"; };
+		699DC9782C931E7B00CE6ADC /* PlatformWebView.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlatformWebView.kt; sourceTree = "<group>"; };
+		699DC97A2C931E7B00CE6ADC /* Shape.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Shape.kt; sourceTree = "<group>"; };
+		699DC97B2C931E7B00CE6ADC /* Color.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Color.kt; sourceTree = "<group>"; };
+		699DC97C2C931E7B00CE6ADC /* Style.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Style.kt; sourceTree = "<group>"; };
+		699DC97D2C931E7B00CE6ADC /* Theme.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Theme.kt; sourceTree = "<group>"; };
+		699DC97E2C931E7B00CE6ADC /* BBitTheme.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBitTheme.kt; sourceTree = "<group>"; };
+		699DC9802C931E7B00CE6ADC /* LoginViewModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginViewModel.kt; sourceTree = "<group>"; };
+		699DC9812C931E7B00CE6ADC /* LoginUIState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginUIState.kt; sourceTree = "<group>"; };
+		699DC9822C931E7B00CE6ADC /* LoginScreen.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginScreen.kt; sourceTree = "<group>"; };
+		699DC9832C931E7B00CE6ADC /* LoginUIEvent.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginUIEvent.kt; sourceTree = "<group>"; };
+		699DC9842C931E7B00CE6ADC /* App.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = App.kt; sourceTree = "<group>"; };
+		699DC9862C931E7B00CE6ADC /* Datamodule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Datamodule.kt; sourceTree = "<group>"; };
+		699DC9872C931E7B00CE6ADC /* Appmodule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appmodule.kt; sourceTree = "<group>"; };
+		699DC9882C931E7B00CE6ADC /* ApiModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApiModule.kt; sourceTree = "<group>"; };
+		699DC9892C931E7B00CE6ADC /* CommonDataModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CommonDataModule.kt; sourceTree = "<group>"; };
+		699DC98A2C931E7B00CE6ADC /* RepositoryModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RepositoryModule.kt; sourceTree = "<group>"; };
+		699DC98B2C931E7B00CE6ADC /* UsecaseModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UsecaseModule.kt; sourceTree = "<group>"; };
+		699DC98C2C931E7B00CE6ADC /* ViewModelModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewModelModule.kt; sourceTree = "<group>"; };
+		699DC98E2C931E7B00CE6ADC /* TransitionExt.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TransitionExt.kt; sourceTree = "<group>"; };
+		699DC9902C931E7B00CE6ADC /* Broadcaster.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Broadcaster.kt; sourceTree = "<group>"; };
+		699DC9932C931E7B00CE6ADC /* LoginRepositoryImpl.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginRepositoryImpl.kt; sourceTree = "<group>"; };
+		699DC9942C931E7B00CE6ADC /* SpaceXRepositoryImpl.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SpaceXRepositoryImpl.kt; sourceTree = "<group>"; };
+		699DC9952C931E7B00CE6ADC /* BaseRepository.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BaseRepository.kt; sourceTree = "<group>"; };
+		699DC9962C931E7B00CE6ADC /* WorkspaceRepositoryImpl.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceRepositoryImpl.kt; sourceTree = "<group>"; };
+		699DC9982C931E7B00CE6ADC /* AuthDataStore.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthDataStore.kt; sourceTree = "<group>"; };
+		699DC9992C931E7B00CE6ADC /* DefaultAuthDataStore.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DefaultAuthDataStore.kt; sourceTree = "<group>"; };
+		699DC99C2C931E7B00CE6ADC /* DatabaseDriverFactory.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DatabaseDriverFactory.kt; sourceTree = "<group>"; };
+		699DC99D2C931E7B00CE6ADC /* Database.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Database.kt; sourceTree = "<group>"; };
+		699DC99F2C931E7B00CE6ADC /* RocketLaunch.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RocketLaunch.kt; sourceTree = "<group>"; };
+		699DC9A12C931E7B00CE6ADC /* PreferenceDataStore.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreferenceDataStore.kt; sourceTree = "<group>"; };
+		699DC9A32C931E7B00CE6ADC /* AuthToken.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthToken.kt; sourceTree = "<group>"; };
+		699DC9A42C931E7B00CE6ADC /* DataState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DataState.kt; sourceTree = "<group>"; };
+		699DC9A72C931E7B00CE6ADC /* DefaultBearerAuthProvider.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DefaultBearerAuthProvider.kt; sourceTree = "<group>"; };
+		699DC9A82C931E7B00CE6ADC /* ApiConstant.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApiConstant.kt; sourceTree = "<group>"; };
+		699DC9A92C931E7B00CE6ADC /* HttpClientProvider.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HttpClientProvider.kt; sourceTree = "<group>"; };
+		699DC9AB2C931E7B00CE6ADC /* LinkDto.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LinkDto.kt; sourceTree = "<group>"; };
+		699DC9AC2C931E7B00CE6ADC /* WorkspaceDtoModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceDtoModel.kt; sourceTree = "<group>"; };
+		699DC9AD2C931E7B00CE6ADC /* AuthDtoModel.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthDtoModel.kt; sourceTree = "<group>"; };
+		699DC9AF2C931E7B00CE6ADC /* WorkspaceService.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceService.kt; sourceTree = "<group>"; };
+		699DC9B02C931E7B00CE6ADC /* SpaceXApi.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SpaceXApi.kt; sourceTree = "<group>"; };
+		699DC9B12C931E7B00CE6ADC /* LoginService.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginService.kt; sourceTree = "<group>"; };
+		699DC9B32C931E7B00CE6ADC /* ApiExceptionBody.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ApiExceptionBody.kt; sourceTree = "<group>"; };
+		699DC9B62C931E7B00CE6ADC /* SpaceXRepository.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SpaceXRepository.kt; sourceTree = "<group>"; };
+		699DC9B72C931E7B00CE6ADC /* WorkspaceRepository.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WorkspaceRepository.kt; sourceTree = "<group>"; };
+		699DC9B82C931E7B00CE6ADC /* LoginRepository.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoginRepository.kt; sourceTree = "<group>"; };
+		699DC9B92C931E7B00CE6ADC /* UIComponent.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIComponent.kt; sourceTree = "<group>"; };
+		699DC9BA2C931E7B00CE6ADC /* ProgressBarState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ProgressBarState.kt; sourceTree = "<group>"; };
+		699DC9BC2C931E7B00CE6ADC /* ViewState.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewState.kt; sourceTree = "<group>"; };
+		699DC9BD2C931E7B00CE6ADC /* GetLaunchesUseCase.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GetLaunchesUseCase.kt; sourceTree = "<group>"; };
+		699DC9C02C931E7B00CE6ADC /* AppDatabase.sq */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppDatabase.sq; sourceTree = "<group>"; };
+		699DC9C82C931E7B00CE6ADC /* GeneralDialog.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GeneralDialog.kt; sourceTree = "<group>"; };
+		699DC9C92C931E7B00CE6ADC /* PlatformWebView.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PlatformWebView.kt; sourceTree = "<group>"; };
+		699DC9CB2C931E7B00CE6ADC /* BBitTheme.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BBitTheme.kt; sourceTree = "<group>"; };
+		699DC9CD2C931E7B00CE6ADC /* Datamodule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Datamodule.kt; sourceTree = "<group>"; };
+		699DC9CE2C931E7B00CE6ADC /* ViewModelModule.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ViewModelModule.kt; sourceTree = "<group>"; };
+		699DC9D22C931E7B00CE6ADC /* DatabaseDriverFactory.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DatabaseDriverFactory.kt; sourceTree = "<group>"; };
+		699DC9D42C931E7B00CE6ADC /* PreferenceDataStoreBuilder.kt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreferenceDataStoreBuilder.kt; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,9 +212,473 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		699DC9572C931E7B00CE6ADC /* commonMain */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9582C931E7B00CE6ADC /* kotlin */,
+				699DC9BE2C931E7B00CE6ADC /* sqldelight */,
+			);
+			name = commonMain;
+			path = ../shared/src/commonMain;
+			sourceTree = "<group>";
+		};
+		699DC9582C931E7B00CE6ADC /* kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9592C931E7B00CE6ADC /* com */,
+			);
+			path = kotlin;
+			sourceTree = "<group>";
+		};
+		699DC9592C931E7B00CE6ADC /* com */ = {
+			isa = PBXGroup;
+			children = (
+				699DC95A2C931E7B00CE6ADC /* bunjne */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		699DC95A2C931E7B00CE6ADC /* bunjne */ = {
+			isa = PBXGroup;
+			children = (
+				699DC95B2C931E7B00CE6ADC /* bbit */,
+			);
+			path = bunjne;
+			sourceTree = "<group>";
+		};
+		699DC95B2C931E7B00CE6ADC /* bbit */ = {
+			isa = PBXGroup;
+			children = (
+				699DC95C2C931E7B00CE6ADC /* ui */,
+				699DC9842C931E7B00CE6ADC /* App.kt */,
+				699DC9852C931E7B00CE6ADC /* di */,
+				699DC98D2C931E7B00CE6ADC /* extension */,
+				699DC98F2C931E7B00CE6ADC /* braodcaster */,
+				699DC9912C931E7B00CE6ADC /* data */,
+				699DC9B42C931E7B00CE6ADC /* domain */,
+			);
+			path = bbit;
+			sourceTree = "<group>";
+		};
+		699DC95C2C931E7B00CE6ADC /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				699DC95D2C931E7B00CE6ADC /* repositoryList */,
+				699DC95F2C931E7B00CE6ADC /* launches */,
+				699DC9642C931E7B00CE6ADC /* launchdetail */,
+				699DC9662C931E7B00CE6ADC /* workspaceList */,
+				699DC96C2C931E7B00CE6ADC /* navigation */,
+				699DC9722C931E7B00CE6ADC /* components */,
+				699DC9792C931E7B00CE6ADC /* theme */,
+				699DC97F2C931E7B00CE6ADC /* login */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		699DC95D2C931E7B00CE6ADC /* repositoryList */ = {
+			isa = PBXGroup;
+			children = (
+				699DC95E2C931E7B00CE6ADC /* RepositoryListScreen.kt */,
+			);
+			path = repositoryList;
+			sourceTree = "<group>";
+		};
+		699DC95F2C931E7B00CE6ADC /* launches */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9602C931E7B00CE6ADC /* LaunchesScreen.kt */,
+				699DC9612C931E7B00CE6ADC /* LaunchesUIState.kt */,
+				699DC9622C931E7B00CE6ADC /* LaunchesUIEvent.kt */,
+				699DC9632C931E7B00CE6ADC /* LaunchesViewModel.kt */,
+			);
+			path = launches;
+			sourceTree = "<group>";
+		};
+		699DC9642C931E7B00CE6ADC /* launchdetail */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9652C931E7B00CE6ADC /* LaunchDetail.kt */,
+			);
+			path = launchdetail;
+			sourceTree = "<group>";
+		};
+		699DC9662C931E7B00CE6ADC /* workspaceList */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9672C931E7B00CE6ADC /* WorkspacesUiEvent.kt */,
+				699DC9682C931E7B00CE6ADC /* WorkspacesUiState.kt */,
+				699DC9692C931E7B00CE6ADC /* WorkspacesUiAction.kt */,
+				699DC96A2C931E7B00CE6ADC /* WorkspaceListViewModel.kt */,
+				699DC96B2C931E7B00CE6ADC /* WorkspaceListScreen.kt */,
+			);
+			path = workspaceList;
+			sourceTree = "<group>";
+		};
+		699DC96C2C931E7B00CE6ADC /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				699DC96D2C931E7B00CE6ADC /* WorkspaceListScreenNav.kt */,
+				699DC96E2C931E7B00CE6ADC /* LaunchesScreenNav.kt */,
+				699DC96F2C931E7B00CE6ADC /* RepositoryListScreenNav.kt */,
+				699DC9702C931E7B00CE6ADC /* LoginScreenNav.kt */,
+				699DC9712C931E7B00CE6ADC /* LaunchDetailScreenNav.kt */,
+			);
+			path = navigation;
+			sourceTree = "<group>";
+		};
+		699DC9722C931E7B00CE6ADC /* components */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9732C931E7B00CE6ADC /* ProgressLoader.kt */,
+				699DC9742C931E7B00CE6ADC /* Toolbar.kt */,
+				699DC9752C931E7B00CE6ADC /* GeneralDialog.kt */,
+				699DC9762C931E7B00CE6ADC /* FullScreenLoadingDialog.kt */,
+				699DC9772C931E7B00CE6ADC /* GeneralViewContainer.kt */,
+				699DC9782C931E7B00CE6ADC /* PlatformWebView.kt */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		699DC9792C931E7B00CE6ADC /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				699DC97A2C931E7B00CE6ADC /* Shape.kt */,
+				699DC97B2C931E7B00CE6ADC /* Color.kt */,
+				699DC97C2C931E7B00CE6ADC /* Style.kt */,
+				699DC97D2C931E7B00CE6ADC /* Theme.kt */,
+				699DC97E2C931E7B00CE6ADC /* BBitTheme.kt */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		699DC97F2C931E7B00CE6ADC /* login */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9802C931E7B00CE6ADC /* LoginViewModel.kt */,
+				699DC9812C931E7B00CE6ADC /* LoginUIState.kt */,
+				699DC9822C931E7B00CE6ADC /* LoginScreen.kt */,
+				699DC9832C931E7B00CE6ADC /* LoginUIEvent.kt */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		699DC9852C931E7B00CE6ADC /* di */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9862C931E7B00CE6ADC /* Datamodule.kt */,
+				699DC9872C931E7B00CE6ADC /* Appmodule.kt */,
+				699DC9882C931E7B00CE6ADC /* ApiModule.kt */,
+				699DC9892C931E7B00CE6ADC /* CommonDataModule.kt */,
+				699DC98A2C931E7B00CE6ADC /* RepositoryModule.kt */,
+				699DC98B2C931E7B00CE6ADC /* UsecaseModule.kt */,
+				699DC98C2C931E7B00CE6ADC /* ViewModelModule.kt */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		699DC98D2C931E7B00CE6ADC /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				699DC98E2C931E7B00CE6ADC /* TransitionExt.kt */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		699DC98F2C931E7B00CE6ADC /* braodcaster */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9902C931E7B00CE6ADC /* Broadcaster.kt */,
+			);
+			path = braodcaster;
+			sourceTree = "<group>";
+		};
+		699DC9912C931E7B00CE6ADC /* data */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9922C931E7B00CE6ADC /* repository */,
+				699DC9972C931E7B00CE6ADC /* data_source */,
+				699DC99A2C931E7B00CE6ADC /* local */,
+				699DC9A22C931E7B00CE6ADC /* model */,
+				699DC9A42C931E7B00CE6ADC /* DataState.kt */,
+				699DC9A52C931E7B00CE6ADC /* remote */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		699DC9922C931E7B00CE6ADC /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9932C931E7B00CE6ADC /* LoginRepositoryImpl.kt */,
+				699DC9942C931E7B00CE6ADC /* SpaceXRepositoryImpl.kt */,
+				699DC9952C931E7B00CE6ADC /* BaseRepository.kt */,
+				699DC9962C931E7B00CE6ADC /* WorkspaceRepositoryImpl.kt */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		699DC9972C931E7B00CE6ADC /* data_source */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9982C931E7B00CE6ADC /* AuthDataStore.kt */,
+				699DC9992C931E7B00CE6ADC /* DefaultAuthDataStore.kt */,
+			);
+			path = data_source;
+			sourceTree = "<group>";
+		};
+		699DC99A2C931E7B00CE6ADC /* local */ = {
+			isa = PBXGroup;
+			children = (
+				699DC99B2C931E7B00CE6ADC /* database */,
+				699DC99E2C931E7B00CE6ADC /* entity */,
+				699DC9A02C931E7B00CE6ADC /* datastore */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		699DC99B2C931E7B00CE6ADC /* database */ = {
+			isa = PBXGroup;
+			children = (
+				699DC99C2C931E7B00CE6ADC /* DatabaseDriverFactory.kt */,
+				699DC99D2C931E7B00CE6ADC /* Database.kt */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		699DC99E2C931E7B00CE6ADC /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				699DC99F2C931E7B00CE6ADC /* RocketLaunch.kt */,
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		699DC9A02C931E7B00CE6ADC /* datastore */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9A12C931E7B00CE6ADC /* PreferenceDataStore.kt */,
+			);
+			path = datastore;
+			sourceTree = "<group>";
+		};
+		699DC9A22C931E7B00CE6ADC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9A32C931E7B00CE6ADC /* AuthToken.kt */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		699DC9A52C931E7B00CE6ADC /* remote */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9A62C931E7B00CE6ADC /* plugin */,
+				699DC9A82C931E7B00CE6ADC /* ApiConstant.kt */,
+				699DC9A92C931E7B00CE6ADC /* HttpClientProvider.kt */,
+				699DC9AA2C931E7B00CE6ADC /* model */,
+				699DC9AE2C931E7B00CE6ADC /* service */,
+				699DC9B22C931E7B00CE6ADC /* error */,
+			);
+			path = remote;
+			sourceTree = "<group>";
+		};
+		699DC9A62C931E7B00CE6ADC /* plugin */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9A72C931E7B00CE6ADC /* DefaultBearerAuthProvider.kt */,
+			);
+			path = plugin;
+			sourceTree = "<group>";
+		};
+		699DC9AA2C931E7B00CE6ADC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9AB2C931E7B00CE6ADC /* LinkDto.kt */,
+				699DC9AC2C931E7B00CE6ADC /* WorkspaceDtoModel.kt */,
+				699DC9AD2C931E7B00CE6ADC /* AuthDtoModel.kt */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		699DC9AE2C931E7B00CE6ADC /* service */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9AF2C931E7B00CE6ADC /* WorkspaceService.kt */,
+				699DC9B02C931E7B00CE6ADC /* SpaceXApi.kt */,
+				699DC9B12C931E7B00CE6ADC /* LoginService.kt */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		699DC9B22C931E7B00CE6ADC /* error */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9B32C931E7B00CE6ADC /* ApiExceptionBody.kt */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		699DC9B42C931E7B00CE6ADC /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9B52C931E7B00CE6ADC /* repository */,
+				699DC9B92C931E7B00CE6ADC /* UIComponent.kt */,
+				699DC9BA2C931E7B00CE6ADC /* ProgressBarState.kt */,
+				699DC9BB2C931E7B00CE6ADC /* usecase */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		699DC9B52C931E7B00CE6ADC /* repository */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9B62C931E7B00CE6ADC /* SpaceXRepository.kt */,
+				699DC9B72C931E7B00CE6ADC /* WorkspaceRepository.kt */,
+				699DC9B82C931E7B00CE6ADC /* LoginRepository.kt */,
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		699DC9BB2C931E7B00CE6ADC /* usecase */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9BC2C931E7B00CE6ADC /* ViewState.kt */,
+				699DC9BD2C931E7B00CE6ADC /* GetLaunchesUseCase.kt */,
+			);
+			path = usecase;
+			sourceTree = "<group>";
+		};
+		699DC9BE2C931E7B00CE6ADC /* sqldelight */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9BF2C931E7B00CE6ADC /* com.bunjne.bbit */,
+			);
+			path = sqldelight;
+			sourceTree = "<group>";
+		};
+		699DC9BF2C931E7B00CE6ADC /* com.bunjne.bbit */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C02C931E7B00CE6ADC /* AppDatabase.sq */,
+			);
+			path = com.bunjne.bbit;
+			sourceTree = "<group>";
+		};
+		699DC9C12C931E7B00CE6ADC /* androidMain */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C22C931E7B00CE6ADC /* kotlin */,
+			);
+			name = androidMain;
+			path = ../shared/src/androidMain;
+			sourceTree = "<group>";
+		};
+		699DC9C22C931E7B00CE6ADC /* kotlin */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C32C931E7B00CE6ADC /* com */,
+			);
+			path = kotlin;
+			sourceTree = "<group>";
+		};
+		699DC9C32C931E7B00CE6ADC /* com */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C42C931E7B00CE6ADC /* bunjne */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		699DC9C42C931E7B00CE6ADC /* bunjne */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C52C931E7B00CE6ADC /* bbit */,
+			);
+			path = bunjne;
+			sourceTree = "<group>";
+		};
+		699DC9C52C931E7B00CE6ADC /* bbit */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C62C931E7B00CE6ADC /* ui */,
+				699DC9CC2C931E7B00CE6ADC /* di */,
+				699DC9CF2C931E7B00CE6ADC /* data */,
+			);
+			path = bbit;
+			sourceTree = "<group>";
+		};
+		699DC9C62C931E7B00CE6ADC /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C72C931E7B00CE6ADC /* components */,
+				699DC9CA2C931E7B00CE6ADC /* theme */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		699DC9C72C931E7B00CE6ADC /* components */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9C82C931E7B00CE6ADC /* GeneralDialog.kt */,
+				699DC9C92C931E7B00CE6ADC /* PlatformWebView.kt */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		699DC9CA2C931E7B00CE6ADC /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9CB2C931E7B00CE6ADC /* BBitTheme.kt */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		699DC9CC2C931E7B00CE6ADC /* di */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9CD2C931E7B00CE6ADC /* Datamodule.kt */,
+				699DC9CE2C931E7B00CE6ADC /* ViewModelModule.kt */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		699DC9CF2C931E7B00CE6ADC /* data */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9D02C931E7B00CE6ADC /* local */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		699DC9D02C931E7B00CE6ADC /* local */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9D12C931E7B00CE6ADC /* database */,
+				699DC9D32C931E7B00CE6ADC /* datastore */,
+			);
+			path = local;
+			sourceTree = "<group>";
+		};
+		699DC9D12C931E7B00CE6ADC /* database */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9D22C931E7B00CE6ADC /* DatabaseDriverFactory.kt */,
+			);
+			path = database;
+			sourceTree = "<group>";
+		};
+		699DC9D32C931E7B00CE6ADC /* datastore */ = {
+			isa = PBXGroup;
+			children = (
+				699DC9D42C931E7B00CE6ADC /* PreferenceDataStoreBuilder.kt */,
+			);
+			path = datastore;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				699DC9C12C931E7B00CE6ADC /* androidMain */,
+				699DC9572C931E7B00CE6ADC /* commonMain */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
 				7555FFB0242A642200829871 /* Frameworks */,
@@ -154,8 +774,86 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699DC9D92C931E7B00CE6ADC /* LaunchesViewModel.kt in Resources */,
+				699DCA192C931E7B00CE6ADC /* ViewState.kt in Resources */,
+				699DCA092C931E7B00CE6ADC /* DataState.kt in Resources */,
+				699DC9F82C931E7B00CE6ADC /* CommonDataModule.kt in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				699DCA0A2C931E7B00CE6ADC /* DefaultBearerAuthProvider.kt in Resources */,
+				699DCA0F2C931E7B00CE6ADC /* AuthDtoModel.kt in Resources */,
+				699DC9DA2C931E7B00CE6ADC /* LaunchDetail.kt in Resources */,
+				699DCA212C931E7B00CE6ADC /* DatabaseDriverFactory.kt in Resources */,
+				699DC9EB2C931E7B00CE6ADC /* Shape.kt in Resources */,
+				699DCA1E2C931E7B00CE6ADC /* BBitTheme.kt in Resources */,
+				699DC9FB2C931E7B00CE6ADC /* ViewModelModule.kt in Resources */,
+				699DC9F62C931E7B00CE6ADC /* Appmodule.kt in Resources */,
+				699DCA072C931E7B00CE6ADC /* PreferenceDataStore.kt in Resources */,
+				699DCA062C931E7B00CE6ADC /* RocketLaunch.kt in Resources */,
+				699DC9FC2C931E7B00CE6ADC /* TransitionExt.kt in Resources */,
+				699DCA1B2C931E7B00CE6ADC /* AppDatabase.sq in Resources */,
+				699DC9D62C931E7B00CE6ADC /* LaunchesScreen.kt in Resources */,
+				699DC9FF2C931E7B00CE6ADC /* SpaceXRepositoryImpl.kt in Resources */,
+				699DC9F52C931E7B00CE6ADC /* Datamodule.kt in Resources */,
+				699DC9F92C931E7B00CE6ADC /* RepositoryModule.kt in Resources */,
+				699DC9DB2C931E7B00CE6ADC /* WorkspacesUiEvent.kt in Resources */,
+				699DCA012C931E7B00CE6ADC /* WorkspaceRepositoryImpl.kt in Resources */,
+				699DCA222C931E7B00CE6ADC /* PreferenceDataStoreBuilder.kt in Resources */,
+				699DC9F42C931E7B00CE6ADC /* App.kt in Resources */,
+				699DC9ED2C931E7B00CE6ADC /* Style.kt in Resources */,
+				699DC9DE2C931E7B00CE6ADC /* WorkspaceListViewModel.kt in Resources */,
+				699DC9E02C931E7B00CE6ADC /* WorkspaceListScreenNav.kt in Resources */,
+				699DCA002C931E7B00CE6ADC /* BaseRepository.kt in Resources */,
+				699DC9E52C931E7B00CE6ADC /* ProgressLoader.kt in Resources */,
+				699DCA0D2C931E7B00CE6ADC /* LinkDto.kt in Resources */,
+				699DCA052C931E7B00CE6ADC /* Database.kt in Resources */,
+				699DC9D82C931E7B00CE6ADC /* LaunchesUIEvent.kt in Resources */,
+				699DC9E42C931E7B00CE6ADC /* LaunchDetailScreenNav.kt in Resources */,
+				699DC9E22C931E7B00CE6ADC /* RepositoryListScreenNav.kt in Resources */,
+				699DC9EC2C931E7B00CE6ADC /* Color.kt in Resources */,
+				699DCA152C931E7B00CE6ADC /* WorkspaceRepository.kt in Resources */,
+				699DC9E12C931E7B00CE6ADC /* LaunchesScreenNav.kt in Resources */,
+				699DC9FA2C931E7B00CE6ADC /* UsecaseModule.kt in Resources */,
+				699DC9F72C931E7B00CE6ADC /* ApiModule.kt in Resources */,
+				699DC9F12C931E7B00CE6ADC /* LoginUIState.kt in Resources */,
+				699DCA162C931E7B00CE6ADC /* LoginRepository.kt in Resources */,
+				699DCA1F2C931E7B00CE6ADC /* Datamodule.kt in Resources */,
+				699DCA042C931E7B00CE6ADC /* DatabaseDriverFactory.kt in Resources */,
+				699DCA1D2C931E7B00CE6ADC /* PlatformWebView.kt in Resources */,
+				699DCA082C931E7B00CE6ADC /* AuthToken.kt in Resources */,
+				699DC9DC2C931E7B00CE6ADC /* WorkspacesUiState.kt in Resources */,
+				699DCA122C931E7B00CE6ADC /* LoginService.kt in Resources */,
+				699DC9EA2C931E7B00CE6ADC /* PlatformWebView.kt in Resources */,
+				699DC9E32C931E7B00CE6ADC /* LoginScreenNav.kt in Resources */,
+				699DCA032C931E7B00CE6ADC /* DefaultAuthDataStore.kt in Resources */,
+				699DCA0E2C931E7B00CE6ADC /* WorkspaceDtoModel.kt in Resources */,
+				699DC9E72C931E7B00CE6ADC /* GeneralDialog.kt in Resources */,
+				699DCA0C2C931E7B00CE6ADC /* HttpClientProvider.kt in Resources */,
+				699DCA102C931E7B00CE6ADC /* WorkspaceService.kt in Resources */,
+				699DC9F22C931E7B00CE6ADC /* LoginScreen.kt in Resources */,
+				699DCA132C931E7B00CE6ADC /* ApiExceptionBody.kt in Resources */,
+				699DC9FD2C931E7B00CE6ADC /* Broadcaster.kt in Resources */,
+				699DC9E92C931E7B00CE6ADC /* GeneralViewContainer.kt in Resources */,
+				699DCA112C931E7B00CE6ADC /* SpaceXApi.kt in Resources */,
+				699DCA1A2C931E7B00CE6ADC /* GetLaunchesUseCase.kt in Resources */,
+				699DC9EF2C931E7B00CE6ADC /* BBitTheme.kt in Resources */,
+				699DC9D72C931E7B00CE6ADC /* LaunchesUIState.kt in Resources */,
+				699DC9DD2C931E7B00CE6ADC /* WorkspacesUiAction.kt in Resources */,
+				699DCA022C931E7B00CE6ADC /* AuthDataStore.kt in Resources */,
+				699DCA182C931E7B00CE6ADC /* ProgressBarState.kt in Resources */,
+				699DCA172C931E7B00CE6ADC /* UIComponent.kt in Resources */,
+				699DCA0B2C931E7B00CE6ADC /* ApiConstant.kt in Resources */,
+				699DC9DF2C931E7B00CE6ADC /* WorkspaceListScreen.kt in Resources */,
+				699DC9F32C931E7B00CE6ADC /* LoginUIEvent.kt in Resources */,
+				699DCA142C931E7B00CE6ADC /* SpaceXRepository.kt in Resources */,
+				699DC9E82C931E7B00CE6ADC /* FullScreenLoadingDialog.kt in Resources */,
+				699DC9EE2C931E7B00CE6ADC /* Theme.kt in Resources */,
+				699DCA202C931E7B00CE6ADC /* ViewModelModule.kt in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				699DC9F02C931E7B00CE6ADC /* LoginViewModel.kt in Resources */,
+				699DC9E62C931E7B00CE6ADC /* Toolbar.kt in Resources */,
+				699DC9FE2C931E7B00CE6ADC /* LoginRepositoryImpl.kt in Resources */,
+				699DC9D52C931E7B00CE6ADC /* RepositoryListScreen.kt in Resources */,
+				699DCA1C2C931E7B00CE6ADC /* GeneralDialog.kt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +893,99 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		69B00AC32C9033D00076E345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Release;
+		};
+		69B00AC42C9033D00076E345 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
+				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BBit;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lsqlite3",
+					"-framework",
+					shared,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		7555FFA3242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -257,62 +1048,6 @@
 			};
 			name = Debug;
 		};
-		7555FFA4242A565B00829871 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		7555FFA6242A565B00829871 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -325,12 +1060,14 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BBit;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-lsqlite3",
 					"-framework",
 					shared,
 				);
@@ -341,34 +1078,6 @@
 			};
 			name = Debug;
 		};
-		7555FFA7242A565B00829871 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
-				);
-				INFOPLIST_FILE = iosApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-framework",
-					shared,
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = orgIdentifier.iosApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -376,19 +1085,19 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7555FFA3242A565B00829871 /* Debug */,
-				7555FFA4242A565B00829871 /* Release */,
+				69B00AC32C9033D00076E345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		7555FFA5242A565B00829871 /* Build configuration list for PBXNativeTarget "iosApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7555FFA6242A565B00829871 /* Debug */,
-				7555FFA7242A565B00829871 /* Release */,
+				69B00AC42C9033D00076E345 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -34,7 +34,12 @@ class LoginViewModel(
 
                 is DataState.Error -> {
                     _uiState.value =
-                        LoginUIState(ViewState.Error(loginResult.statusCode ?: 0, loginResult.message))
+                        LoginUIState(
+                            ViewState.Error(
+                                loginResult.statusCode ?: 0,
+                                loginResult.message
+                            )
+                        )
                 }
             }
         }

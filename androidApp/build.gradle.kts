@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.application)
     kotlin("android")
-    // alias(libs.plugins.hilt)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.kapt)
 }
 
@@ -46,9 +46,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidxComposeCompiler.get()
-    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -70,11 +67,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
 
-    /*implementation(libs.androidx.hilt.navigation.compose)
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.ui.graphics.android)
-    kapt(libs.hilt.compiler)
-    kapt(libs.hilt.ext.compiler)*/
     implementation(libs.koin.android)
     implementation(libs.koin.compose)
 
@@ -82,7 +74,6 @@ dependencies {
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
     implementation(libs.kotlinx.coroutines.guava)
-    implementation(libs.coil.kt)
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.lifecycle.viewModelCompose)
@@ -100,4 +91,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.androidx.metrics)
     implementation(libs.androidx.tracing.ktx)
+
+    implementation(libs.napier)
 }

@@ -6,6 +6,7 @@ import com.bunjne.bbit.data.DataState.Success
 import com.bunjne.bbit.data.remote.StatusCode.INTERNAL_ERROR
 import com.bunjne.bbit.data.remote.StatusCode.NO_INTERNET_ERROR
 import com.bunjne.bbit.data.remote.error.ApiException
+import io.github.aakira.napier.Napier
 import io.ktor.utils.io.errors.IOException
 
 
@@ -28,9 +29,10 @@ open class BaseRepository {
                 message = apiException.error?.message
             )
         } catch (timeoutException: IOException) {
+            Napier.d("Debug: " +  timeoutException.message.toString())
             Error(statusCode = NO_INTERNET_ERROR, message = timeoutException.message)
         } catch (ex: Exception) {
-
+            Napier.d(ex.message.toString())
             Error(statusCode = INTERNAL_ERROR, message = ex.message)
         }
     }

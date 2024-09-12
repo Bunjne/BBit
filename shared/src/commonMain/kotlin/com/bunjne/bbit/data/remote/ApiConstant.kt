@@ -1,6 +1,6 @@
 package com.bunjne.bbit.data.remote
 
-import com.bunjne.bbit.Constants.TIME_SECOND_MS
+const val TIME_SECOND_MS = 1000L
 
 object StatusCode {
     const val SUCCESS = 200
@@ -17,18 +17,15 @@ object StatusCode {
 
 object ApiConstants {
     const val API_TIMEOUT_MS = TIME_SECOND_MS * 10
-    const val CONNECT_ATTEMPT = 5
-    const val EXPIRE_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ssXXX"
     const val ACCESS_TOKEN_GRANT_TYPE = "authorization_code"
     const val REFRESH_TOKEN_GRANT_TYPE = "refresh_token"
+    const val BITBUCKET_CLIENT_ID = "YW5N4Zsq76DyKRrBHj"
+    const val BITBUCKET_CLIENT_KEY = "FBd57pSKYgwRRUxyjFdfCgNMXg8ddxy7"
 }
 
 object ApiEndpoints {
     const val SPACEX_URL = "https://api.spacexdata.com/v5/"
     const val BASE_URL = "https://api.bitbucket.org/2.0/"
     const val AUTH_BASE_URL = "https://bitbucket.org/site/oauth2/"
-    //    const val AUTH_BASE_URL = "http://10.0.2.2:3001"
-    const val BITBUCKET_CLIENT_ID = "YW5N4Zsq76DyKRrBHj"
-    const val AUTHORIZATION_CODE = "authorization_code"
-    const val BITBUCKET_CLIENT_KEY = "FBd57pSKYgwRRUxyjFdfCgNMXg8ddxy7"
+//    const val BASE_URL = "http://10.0.2.2:3008/"
 }

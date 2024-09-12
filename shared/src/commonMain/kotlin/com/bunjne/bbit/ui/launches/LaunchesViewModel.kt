@@ -1,5 +1,8 @@
 package com.bunjne.bbit.ui.launches
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.domain.repository.SpaceXRepository
 import com.bunjne.bbit.domain.usecase.ViewState
@@ -12,6 +15,9 @@ class LaunchesViewModel(
     private val spaceXRepository: SpaceXRepository
 ) : ViewModel() {
 
+    var searchText by mutableStateOf("")
+        private set
+
     private val _uiState = MutableStateFlow(LaunchesUIState())
     val uiState = _uiState.asStateFlow()
 
@@ -21,6 +27,10 @@ class LaunchesViewModel(
                 _uiState.value = _uiState.value.copy(selectedLaunch = uiEvent.launch)
             }
         }
+    }
+
+    fun onSearch(text: String) {
+        searchText = text
     }
 
     fun getLaunches() {

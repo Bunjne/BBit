@@ -1,16 +1,17 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
-    id("com.android.library")
-    id("app.cash.sqldelight")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.sqldelight)
+//    alias(libs.plugins.buildKonfig)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
-    ios()
+    applyDefaultHierarchyTemplate()
     androidTarget {
         compilations.all {
             kotlinOptions {
@@ -25,7 +26,6 @@ kotlin {
         }
     }
 
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -37,7 +37,6 @@ kotlin {
     }
 
     android.libraryVariants.all {
-        this.javaCompile.destinationDirectory
         this.javaCompileProvider.get().destinationDirectory
     }
 
@@ -45,12 +44,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.kotlinx.coroutines.core)
-                implementation(libs.ktor.core)
-                implementation(libs.ktor.cio)
-                implementation(libs.ktor.logging)
-                implementation(libs.ktor.negotiation)
-                implementation(libs.ktor.serilization)
-                implementation(libs.ktor.auth)
+                implementation(libs.napier)
+                implementation(libs.bundles.ktor.common)
                 implementation(libs.kotlinx.datetime)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
@@ -63,25 +58,20 @@ kotlin {
                 implementation(libs.accompanist.system.ui.controller)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
-
                 implementation(libs.kotlinx.coroutines.core)
                 api(libs.mvvm.compose)
                 api(libs.mvvm.core)
                 api(libs.mvvm.flow)
-
-                implementation(libs.voyager.navigator)
-                implementation(libs.voyager.screenModel)
-                implementation(libs.voyager.bottomSheetNavigator)
-                implementation(libs.voyager.tabNavigator)
-                implementation(libs.voyager.koin)
-                implementation(libs.voyager.transitions)
-
-                implementation(libs.napier)
-
-
+                // Navigation
+                implementation(libs.bundles.voyager.common)
                 // use api since the desktop app need to access the Cef to initialize it.
                 api(libs.compose.webview.multiplatform)
                 implementation(libs.multiplatform.settings)
+                // Local Storage
+                implementation(libs.androidx.dataStore.core)
+                implementation(libs.androidx.datastore.preferences)
+                // TouchLab for iOS running
+                implementation(libs.stately.common)
             }
         }
         val commonTest by getting {
@@ -97,7 +87,6 @@ kotlin {
                 implementation(libs.koin.compose)
                 implementation(libs.koin.androidx.compose)
                 api(libs.mvvm.flow.compose)
-//                implementation(libs.androidx.core)
             }
         }
         val iosX64Main by getting
@@ -114,6 +103,8 @@ kotlin {
                 implementation(libs.sqldelight.ios)
                 implementation(libs.mvvm.core)
                 implementation(libs.mvvm.flow)
+                implementation(libs.stately.isolate)
+//                implementation("co.touchlab:stately-iso-collections")
             }
         }
     }
@@ -121,10 +112,29 @@ kotlin {
 
 android {
     namespace = "com.bunjne.bbit"
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 26
     }
+    buildFeatures {
+        buildConfig = true
+    }
+
+//    flavorDimensions.add("variant")
+//    productFlavors {
+//        create("dev") {
+//            dimension = "variant"
+//            isDefault = true
+//        }
+//
+//        create("staging") {
+//            dimension = "variant"
+//        }
+//
+//        create("prod") {
+//            dimension = "variant"
+//        }
+//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

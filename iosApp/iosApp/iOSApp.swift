@@ -4,8 +4,12 @@ import shared
 @main
 struct iOSApp: App {
     init() {
-        HelperKt.doInitKoin()
+        KoinUtilKt.doInitKoin()
+        #if DEBUG
+            NapierUtilKt.setUpNapier()
+        #endif
     }
+
 	var body: some Scene {
 		WindowGroup {
 		GeometryReader { geo in

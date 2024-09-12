@@ -7,6 +7,7 @@
         android:name=".BBitApplication"
         android:allowBackup="false"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"

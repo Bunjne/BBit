@@ -1,4 +1,4 @@
-package com.bunjne.bbit.helper
+package com.bunjne.bbit.util
 
 import com.bunjne.bbit.di.appModules
 import org.koin.core.context.startKoin

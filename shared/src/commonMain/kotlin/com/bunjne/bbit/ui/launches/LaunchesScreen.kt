@@ -1,5 +1,6 @@
 package com.bunjne.bbit.ui.launches
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -7,20 +8,26 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.RemoveCircle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,6 +40,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bunjne.bbit.data.local.entity.RocketLaunch
@@ -62,9 +70,14 @@ fun LaunchesScreen(
         progressBarState = uiState.launchesState as?
     )*/
 
-    LaunchesView(uiState.launchesState) {
-        viewModel.onUIEvent(LaunchesUIEvent.OnLaunchClicked(it))
-    }
+    LaunchesView(
+        launchesState = uiState.launchesState,
+        onLaunchClicked = {
+            viewModel.onUIEvent(LaunchesUIEvent.OnLaunchClicked(it))
+        },
+        searchText = viewModel.searchText,
+        onSearch = viewModel::onSearch
+    )
 
     uiState.selectedLaunch?.let { launch ->
         onLaunchClicked(launch)
@@ -82,7 +95,9 @@ fun LaunchesScreen(
 @Composable
 fun LaunchesView(
     launchesState: ViewState<List<RocketLaunch>>,
-    onLaunchClicked: (RocketLaunch) -> Unit
+    onLaunchClicked: (RocketLaunch) -> Unit,
+    searchText: String,
+    onSearch: (String) -> Unit
 ) {
     var sliderPosition by remember { mutableFloatStateOf(0f) }
 
@@ -104,9 +119,32 @@ fun LaunchesView(
 
         when (launchesState) {
             is ViewState.Success -> {
-                launchesState.data?.let { items ->
-                    LaunchListView(items) { launch ->
-                        onLaunchClicked(launch)
+                Column {
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 4.dp),
+                        value = searchText,
+                        onValueChange = { onSearch(it) },
+                        placeholder = {
+                            Text(
+                                text = "List of SpaceX launches",
+                                color = MaterialTheme.colorScheme.secondary
+                            )
+                        },
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Filled.Search,
+                                contentDescription = null
+                            )
+                        },
+                        shape = DefaultCornerShape
+                    )
+                    launchesState.data?.let { items ->
+                        LaunchListView(items) { launch ->
+                            onLaunchClicked(launch)
+                        }
                     }
                 }
             }
@@ -116,68 +154,20 @@ fun LaunchesView(
             }
 
             is ViewState.Loading -> {
-                Box(
-                    contentAlignment = Alignment.Center, // apply alignment to all children
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    ProgressLoader()
-                }
+                ProgressLoader(modifier = Modifier.fillMaxSize())
             }
         }
     }
 }
 
 @Composable
-fun AmountSlider(
+fun LaunchListView(
+    items: List<RocketLaunch>,
     modifier: Modifier = Modifier,
-    sliderPosition: Float,
-    onValueChange: (Float) -> Unit
+    onClick: (RocketLaunch) -> Unit
 ) {
-    val amountLimit = 100000
-    val min = 0f
-    val max = 100f
-    val amountFactor = amountLimit / max
-    val actualAmount by remember(sliderPosition) {
-        mutableFloatStateOf(amountFactor * sliderPosition)
-    }
-
-    Column(modifier = modifier) {
-        Row {
-            IconButton(
-                onClick = {
-                    onValueChange(sliderPosition - 1)
-                },
-            ) {
-                Icon(imageVector = Icons.Filled.RemoveCircle, "")
-            }
-            Slider(
-                modifier = Modifier.weight(1f),
-                value = sliderPosition,
-                onValueChange = { onValueChange(it) },
-                colors = SliderDefaults.colors(
-                    thumbColor = MaterialTheme.colorScheme.secondary,
-                    activeTrackColor = MaterialTheme.colorScheme.secondary,
-                    inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer,
-                ),
-                valueRange = min..max
-            )
-
-            IconButton(
-                onClick = {
-                    onValueChange(sliderPosition + 1)
-                },
-            ) {
-                Icon(imageVector = Icons.Filled.AddCircle, "")
-            }
-        }
-
-        Text(text = "On value changed: ${actualAmount.toInt()}")
-    }
-}
-
-@Composable
-fun LaunchListView(items: List<RocketLaunch>, onClick: (RocketLaunch) -> Unit) {
     LazyColumn(
+        modifier = modifier,
         contentPadding = PaddingValues(horizontal = 24.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -205,6 +195,7 @@ fun LaunchListView(items: List<RocketLaunch>, onClick: (RocketLaunch) -> Unit) {
 
 @Composable
 fun LaunchItemView(launch: RocketLaunch) {
+
     Text(
         text = launch.missionName,
         color = MaterialTheme.colorScheme.onPrimary

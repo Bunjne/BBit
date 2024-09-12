@@ -9,7 +9,12 @@ import com.multiplatform.webview.web.WebView
 import com.multiplatform.webview.web.rememberWebViewState
 
 @Composable
-actual fun PlatformWebView(modifier: Modifier, url: String, loginState: (String) -> Unit) {
+actual fun PlatformWebView(
+    modifier: Modifier,
+    url: String,
+    platformWebViewState: PlatformWebViewState,
+    loginState: (PlatformWebViewState) -> Unit
+) {
     val webViewState = rememberWebViewState(url).apply {
         webSettings.apply {
             customUserAgentString = "random"
@@ -20,8 +25,13 @@ actual fun PlatformWebView(modifier: Modifier, url: String, loginState: (String)
         }
     }
 
-    LaunchedEffect(webViewState.lastLoadedUrl) {
-        loginState(webViewState.lastLoadedUrl.orEmpty())
+    LaunchedEffect(webViewState.loadingState) {
+        loginState(
+            platformWebViewState.copy(
+                url = webViewState.lastLoadedUrl,
+                isLoading = webViewState.loadingState is LoadingState.Loading
+            )
+        )
     }
 
     WebView(

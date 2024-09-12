@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,18 +38,19 @@ import androidx.compose.ui.unit.sp
 * */
 @Composable
 fun ProgressLoader(
+    modifier: Modifier = Modifier,
     containerRadius: Dp = 50.dp,
     circleRadius: Dp = containerRadius / 6,
     color: Color = MaterialTheme.colorScheme.primary
 ) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier,
         contentAlignment = Alignment.Center,
     ) {
         val circleNum = 9
 
         MetaEntity(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.wrapContentSize(),
             metaContent = {
                 val animation = rememberInfiniteTransition(label = "")
                 val rotation by animation.animateFloat(

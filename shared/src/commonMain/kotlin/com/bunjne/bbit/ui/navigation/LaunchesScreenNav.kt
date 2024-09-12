@@ -17,15 +17,8 @@ class LaunchesScreenNav: Screen {
 
     @Composable
     override fun Content() {
-        val spaceXRepository: SpaceXRepository = koinInject()
-        val viewModel = getViewModel(
-            key = "launch-list-screen",
-            factory = viewModelFactory {
-                LaunchesViewModel(spaceXRepository)
-            }
-        )
         LaunchesScreen(
-            viewModel = viewModel,
+            viewModel = koinInject(),
             onLaunchClicked = {
                 GoToLaunchDetailScreen(it)
             }
