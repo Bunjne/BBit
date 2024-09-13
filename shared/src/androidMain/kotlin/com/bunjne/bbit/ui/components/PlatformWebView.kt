@@ -1,6 +1,5 @@
 package com.bunjne.bbit.ui.components
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -36,20 +35,6 @@ actual fun PlatformWebView(
 
     WebView(
         state = webViewState,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        when (webViewState.loadingState) {
-            is LoadingState.Loading -> {
-
-            }
-
-            is LoadingState.Finished -> {
-                // Do nothing
-            }
-
-            else -> {
-                // Do nothing
-            }
-        }
-    }
+        modifier = modifier
+    )
 }

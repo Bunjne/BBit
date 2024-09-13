@@ -1,23 +1,22 @@
 package com.bunjne.bbit.ui.login
 
 import com.bunjne.bbit.data.DataState
-import com.bunjne.bbit.domain.repository.LoginRepository
-import com.bunjne.bbit.domain.usecase.ViewState
+import com.bunjne.bbit.domain.repository.AuthRepository
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val loginRepository: LoginRepository
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(LoginUIState())
+    private val _uiState = MutableStateFlow(LoginUiState())
     val uiState = _uiState.asStateFlow()
 
-    fun onUIEvent(uiEvent: LoginUIEvent) {
+    fun onUIEvent(uiEvent: LoginUiEvent) {
         when (uiEvent) {
-            is LoginUIEvent.OnLoginClicked -> {
+            is LoginUiEvent.OnLoginClicked -> {
                 signIn(uiEvent.code)
             }
         }
@@ -25,20 +24,23 @@ class LoginViewModel(
 
     private fun signIn(code: String) {
         viewModelScope.launch {
-            when (val loginResult = loginRepository.signInWithClient(code)) {
+            _uiState.value = LoginUiState(
+                isLoading = true,
+            )
+            when (val loginResult = authRepository.signInWithClient(code)) {
                 is DataState.Success -> {
-                    _uiState.value = LoginUIState(
-                        loginState = ViewState.Success(loginResult.data)
+                    _uiState.value = LoginUiState(
+                        isLoading = false,
+                        isSuccess = true,
                     )
                 }
 
                 is DataState.Error -> {
                     _uiState.value =
-                        LoginUIState(
-                            ViewState.Error(
-                                loginResult.statusCode ?: 0,
-                                loginResult.message
-                            )
+                        LoginUiState(
+                            isLoading = false,
+                            isError = true,
+                            errorMessage = loginResult.message
                         )
                 }
             }

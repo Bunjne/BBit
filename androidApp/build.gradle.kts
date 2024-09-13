@@ -30,19 +30,6 @@ android {
             matchingFallbacks.add("release")
         }
     }
-    flavorDimensions += "mode"
-    productFlavors {
-        create("dev") {
-            applicationIdSuffix = ".dev"
-//            buildConfigField(type = "String", name = "API_URL", value = "\"https://api.bitbucket.org/2.0/\"")
-//            buildConfigField(type = "String", name = "AUTH_BASE_URL", value = "\"https://bitbucket.org/site/oauth2/\"")
-//            buildConfigField(type = "String", name = "BITBUCKET_CLIENT_ID", value = "\"***REMOVED***\"")
-//            buildConfigField(type = "String", name = "BITBUCKET_CLIENT_KEY", value = "\"***REMOVED***\"")
-        }
-        create("prod") {
-            applicationIdSuffix = ".prod"
-        }
-    }
     buildFeatures {
         compose = true
     }

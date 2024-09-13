@@ -3,12 +3,13 @@ package com.bunjne.bbit.domain.repository
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.data.remote.model.AuthDtoModel
 import io.ktor.client.request.HttpRequestBuilder
+import kotlinx.coroutines.flow.Flow
 
-interface LoginRepository {
+interface AuthRepository {
 
-    suspend fun getAccessToken(): String?
+    fun getAccessToken(): Flow<String?>
 
-    suspend fun getRefreshToken(): String?
+    fun getRefreshToken(): Flow<String?>
 
     suspend fun signInWithClient(code: String): DataState<AuthDtoModel>
 

@@ -24,12 +24,12 @@ actual fun PlatformWebView(
     modifier: Modifier,
     url: String,
     platformWebViewState: PlatformWebViewState,
-    loginState: (PlatformWebViewState) -> Unit
+    webViewState: (PlatformWebViewState) -> Unit
 ) {
     val rememberedNavigationDelegate = remember {
         WKNavigationDelegate(
             platformWebViewState = platformWebViewState,
-            loginState = loginState
+            loginState = webViewState
         )
     }
     val webConfiguration = WKWebViewConfiguration()
@@ -66,7 +66,7 @@ class WKNavigationDelegate(
         println("webView, decisionHandler: ${webView.URL} ${webView.loading}")
         loginState(
             platformWebViewState.copy(
-                url = webView.URL.toString(),
+                url = decidePolicyForNavigationAction.request.URL.toString(),
                 isLoading = webView.loading
             )
         )
