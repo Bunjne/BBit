@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.bunjne.bbit.domain.repository.LoginRepository
+import com.bunjne.bbit.domain.repository.AuthRepository
 import com.bunjne.bbit.ui.login.LoginScreen
 import com.bunjne.bbit.ui.login.LoginViewModel
 import dev.icerock.moko.mvvm.compose.getViewModel
@@ -15,7 +15,7 @@ class LoginScreenNav : Screen {
 
     @Composable
     override fun Content() {
-        val loginWorkspace: LoginRepository = koinInject()
+        val loginWorkspace: AuthRepository = koinInject()
         val viewModel = getViewModel(
             key = "launch-list-screen",
             factory = viewModelFactory {

@@ -29,10 +29,10 @@ open class BaseRepository {
                 message = apiException.error?.message
             )
         } catch (timeoutException: IOException) {
-            Napier.d("Debug: " +  timeoutException.message.toString())
+            Napier.e("Debug: " +  timeoutException.message.toString())
             Error(statusCode = NO_INTERNET_ERROR, message = timeoutException.message)
         } catch (ex: Exception) {
-            Napier.d(ex.message.toString())
+            Napier.e(ex.message.toString())
             Error(statusCode = INTERNAL_ERROR, message = ex.message)
         }
     }

@@ -6,7 +6,7 @@ import com.bunjne.bbit.data.remote.ApiEndpoints
 import com.bunjne.bbit.data.remote.HttpClientProvider
 import com.bunjne.bbit.data.remote.HttpClientType
 import com.bunjne.bbit.data.remote.plugin.DefaultBearerAuthProvider
-import com.bunjne.bbit.domain.repository.LoginRepository
+import com.bunjne.bbit.domain.repository.AuthRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.plugins.auth.Auth
@@ -63,13 +63,13 @@ fun appModules() = listOf(
 
 private fun HttpClientConfig<*>.setAuth(
     authDataStore: AuthDataStore,
-    loginRepository: LoginRepository
+    authRepository: AuthRepository
 ) {
     install(Auth) {
         providers.add(
             DefaultBearerAuthProvider(
                 refreshTokens = {
-                    loginRepository.refreshToken {
+                    authRepository.refreshToken {
                         markAsRefreshTokenRequest()
                     }.run {
                         authDataStore.getAuthTokens().toBearerTokens()
