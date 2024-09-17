@@ -27,8 +27,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bunjne.bbit.data.remote.model.WorkspaceDto
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
+import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
 import com.bunjne.bbit.ui.components.GeneralDialog
+import com.bunjne.bbit.ui.components.ToolbarActionType
 
 @Composable
 fun WorkspacesView(
@@ -57,12 +59,19 @@ fun WorkspacesScreen(
             CustomToolbarScreen(
                 title = "Workspace",
                 isBack = false,
+                toolbarActions = listOf(ToolbarActionType.INFO),
+                onActionClicked = {},
                 onNavigationClicked = {}
             )
+
         },
         contentWindowInsets = WindowInsets(bottom = 0.dp)
     ) {
-        Box(modifier = Modifier.fillMaxSize().padding(it)) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+        ) {
             when {
                 uiState.isLoading -> {
                     FullScreenLoadingDialog()
@@ -75,7 +84,14 @@ fun WorkspacesScreen(
                     )
                 }
 
-                uiState.error.isNullOrEmpty().not() -> {}
+                uiState.error.isNullOrEmpty().not() -> {
+                    ErrorPopup(
+                        error = uiState.error.toString(),
+                        onDismiss = {
+                            onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                        }
+                    )
+                }
             }
         }
     }

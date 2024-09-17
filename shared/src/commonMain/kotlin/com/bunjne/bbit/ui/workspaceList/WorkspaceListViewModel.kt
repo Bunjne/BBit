@@ -51,6 +51,7 @@ class WorkspaceListViewModel(
         when (action) {
             is WorkspacesUiAction.OnWorkspaceClicked -> ::handleOnWorkspaceCLicked.invoke(action.workspace)
             is WorkspacesUiAction.OnWorkspaceUnSelected -> ::handleOnWorkspaceUnSelected.invoke()
+            is WorkspacesUiAction.OnErrorCanceled -> ::handleOnErrorCanceled.invoke()
         }
     }
 
@@ -63,5 +64,11 @@ class WorkspaceListViewModel(
 
     private fun handleOnWorkspaceUnSelected() {
         _uiState.update { state -> state.copy(selectetWorkspace = null) }
+    }
+
+    private fun handleOnErrorCanceled() {
+        _uiState.update {
+            it.copy(error = null)
+        }
     }
 }
