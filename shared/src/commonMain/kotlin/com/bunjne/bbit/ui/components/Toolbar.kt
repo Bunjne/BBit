@@ -1,8 +1,8 @@
 package com.bunjne.bbit.ui.components
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -14,6 +14,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -24,7 +25,9 @@ fun CustomToolbarScreen(
     ),
     title: String,
     isBack: Boolean,
-    onNavigationClicked: () -> Unit = {}
+    onNavigationClicked: () -> Unit = {},
+    toolbarActions: List<ToolbarActionType> = emptyList(),
+    onActionClicked: (ToolbarActionType) -> Unit = {}
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier,
@@ -43,19 +46,31 @@ fun CustomToolbarScreen(
         navigationIcon = {
             if (isBack) {
                 IconButton(onClick = { onNavigationClicked() }) {
-                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "backIcon")
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "backIcon"
+                    )
                 }
-            } else {
+            }
+        },
+        actions = {
+            toolbarActions.forEach { action ->
                 IconButton(onClick = {
-                    //TODO Do something
+                    onActionClicked(action)
                 }) {
                     Icon(
-                        imageVector = Icons.Filled.Menu,
-                        contentDescription = "menuIcon",
-                        tint = MaterialTheme.colorScheme.onPrimary
+                        imageVector = action.icon,
+                        tint = MaterialTheme.colorScheme.onPrimary,
+                        contentDescription = "${action.name}Action",
                     )
                 }
             }
         }
     )
+}
+
+enum class ToolbarActionType(
+    val icon: ImageVector
+) {
+    INFO(Icons.Filled.Info)
 }
