@@ -161,7 +161,6 @@ fun WorkspaceList(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WorkspaceItem(
     modifier: Modifier,
@@ -177,13 +176,44 @@ fun WorkspaceItem(
         onClick = { onCardClicked(workspace) },
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
     ) {
-        Text(
-            text = workspace.workspace.name,
-            modifier = Modifier.fillMaxWidth()
-                .padding(16.dp),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onPrimaryContainer,
-            textAlign = TextAlign.Center
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        ) {
+            Card(
+                modifier = Modifier.wrapContentSize(),
+                shape = CircleShape,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface
+                )
+            ) {
+                SubcomposeAsyncImage(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .padding(8.dp),
+                    model = workspace.workspace.links?.avatar?.href,
+                    contentDescription = "Workspace profile image ${workspace.workspace.uuid}",
+                    error = {
+                        Text(
+                            modifier = Modifier.wrapContentSize(),
+                            textAlign = TextAlign.Center,
+                            text = workspace.workspace.name.first().uppercase(),
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
+                )
+            }
+
+            Text(
+                text = workspace.workspace.name,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+        }
     }
 }

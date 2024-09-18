@@ -73,6 +73,12 @@ kotlin {
                 implementation(libs.androidx.datastore.preferences)
                 // TouchLab for iOS running
                 implementation(libs.stately.common)
+                // Image Loader
+                implementation(libs.ktor.core)
+                implementation(libs.coil.compose.core)
+                implementation(libs.coil.compose)
+                implementation(libs.coil.mp)
+                implementation(libs.coil.network.ktor)
             }
         }
         val commonTest by getting {
@@ -109,6 +115,12 @@ kotlin {
             }
         }
     }
+}
+
+compose.resources {
+    publicResClass = false
+    packageOfResClass = "com.bunjne.bbit.resources"
+    generateResClass = auto
 }
 
 android {
