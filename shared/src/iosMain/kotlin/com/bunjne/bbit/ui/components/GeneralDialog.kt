@@ -14,7 +14,7 @@ actual fun GeneralDialog(
     title: String,
     message: String,
     positiveText: String,
-    negativeText: String,
+    negativeText: String?,
     onConfirmed: () -> Unit,
     onDismissed: () -> Unit
 ) {
@@ -23,13 +23,15 @@ actual fun GeneralDialog(
         message = message,
         preferredStyle = UIAlertControllerStyleActionSheet
     )
-    alert.addAction(
-        actionWithTitle(
-            title = negativeText,
-            style = UIAlertActionStyleDefault,
-            handler = { onDismissed() }
+    if (!negativeText.isNullOrBlank()) {
+        alert.addAction(
+            actionWithTitle(
+                title = negativeText,
+                style = UIAlertActionStyleDefault,
+                handler = { onDismissed() }
+            )
         )
-    )
+    }
     alert.addAction(
         actionWithTitle(
             title = positiveText,
