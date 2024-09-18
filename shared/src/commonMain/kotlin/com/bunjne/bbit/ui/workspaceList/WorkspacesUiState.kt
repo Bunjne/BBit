@@ -6,5 +6,6 @@ data class WorkspacesUiState(
     var isLoading: Boolean = false,
     var error: String? = null,
     var workspaceList: List<WorkspaceDto> = emptyList(),
-    var selectetWorkspace: WorkspaceDto? = null
+    var selectedWorkspace: WorkspaceDto? = null,
+    var showInfoInDialog: Boolean = false
 )

@@ -12,7 +12,7 @@ actual fun GeneralDialog(
     title: String,
     message: String,
     positiveText: String,
-    negativeText: String,
+    negativeText: String?,
     onConfirmed: () -> Unit,
     onDismissed: () -> Unit
 ) {
@@ -30,12 +30,14 @@ actual fun GeneralDialog(
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismissed) {
-                Text(
-                    text = negativeText,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+            if (!negativeText.isNullOrBlank()) {
+                TextButton(onClick = onDismissed) {
+                    Text(
+                        text = negativeText,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                    )
+                }
             }
         },
         properties = DialogProperties(

@@ -6,4 +6,5 @@ sealed interface WorkspacesUiAction {
     data class OnWorkspaceClicked(val workspace: WorkspaceDto) : WorkspacesUiAction
     data object OnWorkspaceUnSelected : WorkspacesUiAction
     data object OnErrorCanceled : WorkspacesUiAction
+    data object OnInfoClicked : WorkspacesUiAction
 }

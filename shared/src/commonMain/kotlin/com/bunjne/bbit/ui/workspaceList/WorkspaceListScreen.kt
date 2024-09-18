@@ -3,12 +3,16 @@ package com.bunjne.bbit.ui.workspaceList
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -25,12 +29,22 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil3.compose.SubcomposeAsyncImage
 import com.bunjne.bbit.data.remote.model.WorkspaceDto
+import com.bunjne.bbit.resources.Res
+import com.bunjne.bbit.resources.general_cancel
+import com.bunjne.bbit.resources.general_ok
+import com.bunjne.bbit.resources.workspaces_dialog_description
+import com.bunjne.bbit.resources.workspaces_dialog_title
+import com.bunjne.bbit.resources.workspaces_title
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
 import com.bunjne.bbit.ui.components.GeneralDialog
 import com.bunjne.bbit.ui.components.ToolbarActionType
+import org.jetbrains.compose.resources.stringResource
+
+private val actionList = listOf(ToolbarActionType.INFO)
 
 @Composable
 fun WorkspacesView(
@@ -57,11 +71,14 @@ fun WorkspacesScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             CustomToolbarScreen(
-                title = "Workspace",
+                title = stringResource(Res.string.workspaces_title),
                 isBack = false,
-                toolbarActions = listOf(ToolbarActionType.INFO),
-                onActionClicked = {},
-                onNavigationClicked = {}
+                toolbarActions = actionList,
+                onActionClicked = { action ->
+                    if (action == ToolbarActionType.INFO) {
+                        onUiAction(WorkspacesUiAction.OnInfoClicked)
+                    }
+                },
             )
 
         },
@@ -96,14 +113,23 @@ fun WorkspacesScreen(
         }
     }
 
-    uiState.selectetWorkspace?.let {
+    uiState.selectedWorkspace?.let {
         GeneralDialog(
             title = it.workspace.name,
             message = it.workspace.slug,
-            positiveText = "Ok",
-            negativeText = "Cancel",
+            positiveText = stringResource(Res.string.general_ok),
+            negativeText = stringResource(Res.string.general_cancel),
             onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
             onDismissed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) }
+        )
+    }
+
+    if (uiState.showInfoInDialog) {
+        GeneralDialog(
+            title = stringResource(Res.string.workspaces_dialog_title),
+            message = stringResource(Res.string.workspaces_dialog_description),
+            positiveText = stringResource(Res.string.general_ok),
+            onConfirmed = { onUiAction(WorkspacesUiAction.OnInfoClicked) },
         )
     }
 }
@@ -116,7 +142,7 @@ fun WorkspaceList(
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(
             items = workspaceList,

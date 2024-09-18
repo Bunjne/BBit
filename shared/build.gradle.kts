@@ -43,6 +43,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.napier)
                 implementation(libs.bundles.ktor.common)

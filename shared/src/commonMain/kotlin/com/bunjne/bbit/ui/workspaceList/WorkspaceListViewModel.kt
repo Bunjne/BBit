@@ -52,23 +52,28 @@ class WorkspaceListViewModel(
             is WorkspacesUiAction.OnWorkspaceClicked -> ::handleOnWorkspaceCLicked.invoke(action.workspace)
             is WorkspacesUiAction.OnWorkspaceUnSelected -> ::handleOnWorkspaceUnSelected.invoke()
             is WorkspacesUiAction.OnErrorCanceled -> ::handleOnErrorCanceled.invoke()
+            is WorkspacesUiAction.OnInfoClicked -> ::handleOnWorkspaceInfoClicked.invoke()
+
         }
     }
 
     private fun handleOnWorkspaceCLicked(workspace: WorkspaceDto) {
-        _uiState.update { state -> state.copy(selectetWorkspace = workspace) }
-        viewModelScope.launch {
-            _uiEvent.send(WorkspacesUiEvent.ShowWorkspaceInfo)
-        }
+        _uiState.update { state -> state.copy(selectedWorkspace = workspace) }
     }
 
     private fun handleOnWorkspaceUnSelected() {
-        _uiState.update { state -> state.copy(selectetWorkspace = null) }
+        _uiState.update { state -> state.copy(selectedWorkspace = null) }
     }
 
     private fun handleOnErrorCanceled() {
         _uiState.update {
             it.copy(error = null)
+        }
+    }
+
+    private fun handleOnWorkspaceInfoClicked() {
+        _uiState.update {
+            it.copy(showInfoInDialog = !it.showInfoInDialog)
         }
     }
 }

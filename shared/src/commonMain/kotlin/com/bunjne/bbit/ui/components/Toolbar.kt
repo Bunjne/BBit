@@ -55,9 +55,11 @@ fun CustomToolbarScreen(
         },
         actions = {
             toolbarActions.forEach { action ->
-                IconButton(onClick = {
-                    onActionClicked(action)
-                }) {
+                IconButton(
+                    onClick = {
+                        onActionClicked(action)
+                    }
+                ) {
                     Icon(
                         imageVector = action.icon,
                         tint = MaterialTheme.colorScheme.onPrimary,
