@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BBit</string>
+    <string name="workspaces_title">Workspaces</string>
+    <string name="workspaces_dialog_title">Workspace List Screen</string>
+    <string name="workspaces_dialog_description">This is a example screen displaying the real information retrieving from Bitbucket API.</string>
+    <string name="general_ok">Ok</string>
+    <string name="general_cancel">Cancel</string>
+</resources>
