@@ -29,7 +29,7 @@ fun GeneralViewContainer(
 
             when (uiComponent) {
                 is UIComponent.Dialog -> {
-                    GeneralDialog(
+                    GeneralPopupDialog(
                         title = uiComponent.title,
                         message = uiComponent.description,
                         positiveText = uiComponent.positiveText,

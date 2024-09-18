@@ -81,7 +81,7 @@ fun LaunchesScreen(
 
     uiState.selectedLaunch?.let { launch ->
         onLaunchClicked(launch)
-//        GeneralDialog(
+//        GeneralPopupDialog(
 //            title = launch.missionName,
 //            message = launch.details.orEmpty(),
 //            positiveText = "Confirm",
