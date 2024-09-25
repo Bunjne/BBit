@@ -1,9 +1,10 @@
-package com.bunjne.bbit.data.data_source
+package com.bunjne.bbit.data.data_source.impl
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.model.AuthToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
@@ -12,9 +13,9 @@ import kotlinx.coroutines.flow.map
 private val REFRESH_TOKEN_KEY = stringPreferencesKey("refresh_token")
 private val ACCESS_TOKEN_KEY = stringPreferencesKey("access_token")
 
-class DefaultAuthDataStore(
+class DefaultAuthPreferencesDataSource(
     private val dataStore: DataStore<Preferences>
-) : AuthDataStore {
+) : AuthPreferencesDataSource {
 
     override val accessToken: Flow<String?> = dataStore.data.map {
         it[ACCESS_TOKEN_KEY]

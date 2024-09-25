@@ -3,7 +3,7 @@ package com.bunjne.bbit.data.data_source
 import com.bunjne.bbit.data.model.AuthToken
 import kotlinx.coroutines.flow.Flow
 
-interface AuthDataStore {
+interface AuthPreferencesDataSource {
 
     val accessToken: Flow<String?>
     val refreshToken: Flow<String?>

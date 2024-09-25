@@ -28,13 +28,28 @@ private const val WEB_VIEW_URL =
 private const val AUTH_CALLBACK_URL_PREFIX = "com.seven.bit://authorization"
 
 @Composable
-fun LoginScreen(
+internal fun LoginRoute(
     viewModel: LoginViewModel,
-    onLoginSuccess: @Composable () -> Unit
+    onLoginSuccess: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    LoginScreen(
+        uiState = uiState,
+        onLoginSuccess = onLoginSuccess,
+        onLoginClicked = { url ->
+            viewModel.onUIEvent(LoginUiEvent.OnLoginClicked(url.substringAfter("code=")))
+        }
+    )
+}
+
+@Composable
+fun LoginScreen(
+    uiState: LoginUiState,
+    onLoginSuccess: () -> Unit,
+    onLoginClicked: (String) -> Unit
+) {
     var platformWebViewState by remember {
-        mutableStateOf(PlatformWebViewState(null, false))
+        mutableStateOf(PlatformWebViewState(null, true))
     }
     val shouldShowLoading by remember {
         derivedStateOf {
@@ -59,12 +74,12 @@ fun LoginScreen(
                 .systemBarsPadding(),
             url = WEB_VIEW_URL,
             platformWebViewState = platformWebViewState,
-            webViewState = {
+            onWebViewStateChanged = {
                 Napier.d("PlatformWebView webViewState: $it")
                 platformWebViewState = it
                 platformWebViewState.url?.let { url ->
                     if (url.contains(AUTH_CALLBACK_URL_PREFIX, true)) {
-                        viewModel.onUIEvent(LoginUiEvent.OnLoginClicked(url.substringAfter("code=")))
+                        onLoginClicked(url.substringAfter("code="))
                     }
                 }
             }

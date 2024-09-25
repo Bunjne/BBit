@@ -1,6 +1,6 @@
 package com.bunjne.bbit.data.remote.service
 
-import com.bunjne.bbit.data.data_source.AuthDataStore
+import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.model.WorkspaceResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -13,7 +13,7 @@ interface WorkspaceService {
 
 class WorkspaceServiceImpl(
     private val httpClient: HttpClient,
-    private val authDataStore: AuthDataStore,
+    private val authPreferencesDataSource: AuthPreferencesDataSource,
 ) : WorkspaceService {
     override suspend fun getCurrentWorkspaces(page: Int): WorkspaceResponse =
         httpClient.get("user/permissions/workspaces") {
