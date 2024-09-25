@@ -1,8 +1,9 @@
 package com.bunjne.bbit.ui.login
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.domain.repository.AuthRepository
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
