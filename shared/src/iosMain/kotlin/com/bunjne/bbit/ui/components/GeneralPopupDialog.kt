@@ -6,11 +6,11 @@ import platform.UIKit.UIAlertAction.Companion.actionWithTitle
 import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertActionStyleDestructive
 import platform.UIKit.UIAlertController
-import platform.UIKit.UIAlertControllerStyleActionSheet
+import platform.UIKit.UIAlertControllerStyleAlert
 
 
 @Composable
-actual fun GeneralDialog(
+actual fun GeneralPopupDialog(
     title: String,
     message: String,
     positiveText: String,
@@ -21,7 +21,7 @@ actual fun GeneralDialog(
     val alert = UIAlertController.alertControllerWithTitle(
         title = title,
         message = message,
-        preferredStyle = UIAlertControllerStyleActionSheet
+        preferredStyle = UIAlertControllerStyleAlert
     )
     if (!negativeText.isNullOrBlank()) {
         alert.addAction(

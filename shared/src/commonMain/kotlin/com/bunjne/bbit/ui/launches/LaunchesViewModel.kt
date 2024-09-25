@@ -3,10 +3,11 @@ package com.bunjne.bbit.ui.launches
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.domain.repository.SpaceXRepository
 import com.bunjne.bbit.domain.usecase.ViewState
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

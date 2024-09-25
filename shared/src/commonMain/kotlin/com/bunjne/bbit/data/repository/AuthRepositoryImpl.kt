@@ -1,7 +1,7 @@
 package com.bunjne.bbit.data.repository
 
 import com.bunjne.bbit.data.DataState
-import com.bunjne.bbit.data.data_source.AuthDataStore
+import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.ApiConstants.ACCESS_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.ApiConstants.REFRESH_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.model.AuthDtoModel
@@ -13,20 +13,20 @@ import kotlinx.coroutines.flow.firstOrNull
 
 class AuthRepositoryImpl(
     private val api: LoginService,
-    private val authDataStore: AuthDataStore
+    private val authPreferencesDataSource: AuthPreferencesDataSource
 ) : BaseRepository(), AuthRepository {
 
-    override fun getAccessToken(): Flow<String?> = authDataStore.accessToken
+    override fun getAccessToken(): Flow<String?> = authPreferencesDataSource.accessToken
 
-    override fun getRefreshToken(): Flow<String?> = authDataStore.refreshToken
+    override fun getRefreshToken(): Flow<String?> = authPreferencesDataSource.refreshToken
 
     override suspend fun signInWithClient(code: String): DataState<AuthDtoModel> = execute {
         api.getAccessToken(
             type = ACCESS_TOKEN_GRANT_TYPE,
             code = code
         ).also {
-            authDataStore.saveAccessToken(it.accessToken)
-            authDataStore.saveRefreshToken(it.refreshToken)
+            authPreferencesDataSource.saveAccessToken(it.accessToken)
+            authPreferencesDataSource.saveRefreshToken(it.refreshToken)
         }
     }
 
@@ -34,11 +34,11 @@ class AuthRepositoryImpl(
         execute {
             api.refreshToken(
                 type = REFRESH_TOKEN_GRANT_TYPE,
-                token = authDataStore.refreshToken.firstOrNull().orEmpty(),
+                token = authPreferencesDataSource.refreshToken.firstOrNull().orEmpty(),
                 req = req
             ).also {
-                authDataStore.saveAccessToken(it.accessToken)
-                authDataStore.saveRefreshToken(it.refreshToken)
+                authPreferencesDataSource.saveAccessToken(it.accessToken)
+                authPreferencesDataSource.saveRefreshToken(it.refreshToken)
             }
         }
 }

@@ -12,7 +12,7 @@ actual fun PlatformWebView(
     modifier: Modifier,
     url: String,
     platformWebViewState: PlatformWebViewState,
-    webViewState: (PlatformWebViewState) -> Unit
+    onWebViewStateChanged: (PlatformWebViewState) -> Unit
 ) {
     val webViewState = rememberWebViewState(url).apply {
         webSettings.apply {
@@ -25,7 +25,7 @@ actual fun PlatformWebView(
     }
 
     LaunchedEffect(webViewState.loadingState) {
-        webViewState(
+        onWebViewStateChanged(
             platformWebViewState.copy(
                 url = webViewState.lastLoadedUrl,
                 isLoading = webViewState.loadingState is LoadingState.Loading
