@@ -1,7 +1,12 @@
 [versions]
+# SDK versions
+compileSdk = "35"
+minSdk = "29"
+targetSdk = "35"
+
 accompanist = "0.28.0"
 androidDesugarJdkLibs = "2.0.3"
-androidGradlePlugin = "8.1.4"
+androidGradlePlugin = "8.5.1"
 androidxActivity = "1.8.0-alpha06"
 androidxAppCompat = "1.7.0"
 androidxBrowser = "1.4.0"
@@ -35,24 +40,25 @@ firebasePerfPlugin = "1.4.2"
 gmsPlugin = "4.4.2"
 googleOss = "17.1.0"
 googleOssPlugin = "0.10.6"
-koin = "3.5.6"
-koinCompose = "1.1.5"
+koin = "4.0.0-RC2"
+koinCompose = "4.0.0"
 jacoco = "0.8.7"
 jetbrainsCompose = "1.6.11"
 junit4 = "4.13.2"
-kotlin = "2.0.0"
+kotlin = "2.0.20"
 cocoapods = "1.9.10"
 kotlinxCoroutines = "1.8.1"
 kotlinxDatetime = "0.4.0"
 kotlinxSerializationJson = "1.6.3"
 ksp = "2.0.10-1.0.24"
 ktor = "2.3.12"
+lifecycleViewModel = "2.8.0-rc01"
 lint = "31.0.2"
 material3 = "1.1.2"
-mokoMvvmVersion = "0.16.0"
 multiplatformSettings = "1.1.1"
 multiplatformSettingsDatastore = "1.1.1"
 napier = "2.7.1"
+navigationCompose = "2.8.0-alpha09"
 okhttp = "4.12.0"
 protobuf = "3.23.4"
 protobufPlugin = "0.9.3"
@@ -95,7 +101,6 @@ androidx-dataStore-core = { group = "androidx.datastore", name = "datastore", ve
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
-androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-metrics = { group = "androidx.metrics", name = "metrics-performance", version.ref = "androidxMetrics" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation" }
@@ -123,11 +128,14 @@ firebase-performance = { group = "com.google.firebase", name = "firebase-perf-kt
 firebase-performance-gradle = { group = "com.google.firebase", name = "perf-plugin", version.ref = "firebasePerfPlugin" }
 google-oss-licenses = { group = "com.google.android.gms", name = "play-services-oss-licenses", version.ref = "googleOss" }
 google-oss-licenses-plugin = { group = "com.google.android.gms", name = "oss-licenses-plugin", version.ref = "googleOssPlugin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
-koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
+koin-core = { group = "io.insert-koin", name = "koin-core" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose" }
+koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmodel" }
+koin-compose-viewmodel-navigation = { group = "io.insert-koin", name = "koin-compose-viewmodel-navigation" }
+koin-test = { group = "io.insert-koin", name = "koin-test" }
 junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
@@ -138,11 +146,8 @@ kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime",
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 lint-api = { group = "com.android.tools.lint", name = "lint-api", version.ref = "lint" }
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatformSettings" }
-mvvm-compose = { module = "dev.icerock.moko:mvvm-compose", version.ref = "mokoMvvmVersion" }
-mvvm-core = { module = "dev.icerock.moko:mvvm-core", version.ref = "mokoMvvmVersion" }
-mvvm-flow = { module = "dev.icerock.moko:mvvm-flow", version.ref = "mokoMvvmVersion" }
-mvvm-flow-compose = { module = "dev.icerock.moko:mvvm-flow-compose", version.ref = "mokoMvvmVersion" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 protobuf-kotlin-lite = { group = "com.google.protobuf", name = "protobuf-kotlin-lite", version.ref = "protobuf" }
 protobuf-protoc = { group = "com.google.protobuf", name = "protoc", version.ref = "protobuf" }
@@ -164,18 +169,11 @@ ktor-serilization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json
 ktor-auth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor" }
 sqldelight-android = { group = "app.cash.sqldelight", name = "android-driver", version.ref = "sqlDelight" }
 sqldelight-ios = { group = "app.cash.sqldelight", name = "native-driver", version.ref = "sqlDelight" }
-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
-voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
-voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
-voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewModel" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 firebase-crashlytics-gradlePlugin = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsPlugin" }
-firebase-performance-gradlePlugin = { group = "com.google.firebase", name = "perf-plugin", version.ref = "firebasePerfPlugin" }
-kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 androidx-ui-graphics-android = { group = "androidx.compose.ui", name = "ui-graphics-android", version = "androidUiGraphics" }
 
@@ -200,5 +198,5 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }
 
 [bundles]
+koin-compose = ['koin-compose', 'koin-compose-viewmodel', 'koin-compose-viewmodel-navigation']
 ktor-common = ['ktor-auth', 'ktor-cio', 'ktor-core', 'ktor-logging', 'ktor-serilization', 'ktor-negotiation']
-voyager-common = ['voyager-bottomSheetNavigator', 'voyager-koin', 'voyager-tabNavigator', 'voyager-navigator', 'voyager-screenModel', 'voyager-transitions']

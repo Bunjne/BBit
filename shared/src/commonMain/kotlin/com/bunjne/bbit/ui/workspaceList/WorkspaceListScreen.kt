@@ -47,7 +47,7 @@ import org.jetbrains.compose.resources.stringResource
 private val actionList = listOf(ToolbarActionType.INFO)
 
 @Composable
-fun WorkspacesView(
+fun WorkspacesRoute(
     viewModel: WorkspaceListViewModel
 ) {
     val uiState by viewModel.uiState.collectAsState()

@@ -24,12 +24,12 @@ actual fun PlatformWebView(
     modifier: Modifier,
     url: String,
     platformWebViewState: PlatformWebViewState,
-    webViewState: (PlatformWebViewState) -> Unit
+    onWebViewStateChanged: (PlatformWebViewState) -> Unit
 ) {
     val rememberedNavigationDelegate = remember {
         WKNavigationDelegate(
             platformWebViewState = platformWebViewState,
-            loginState = webViewState
+            onWebViewStateChanged = onWebViewStateChanged
         )
     }
     val webConfiguration = WKWebViewConfiguration()
@@ -55,7 +55,7 @@ actual fun PlatformWebView(
 
 class WKNavigationDelegate(
     private val platformWebViewState: PlatformWebViewState,
-    private val loginState: (PlatformWebViewState) -> Unit
+    private val onWebViewStateChanged: (PlatformWebViewState) -> Unit
 ) : NSObject(),
     WKNavigationDelegateProtocol {
     override fun webView(
@@ -63,8 +63,7 @@ class WKNavigationDelegate(
         decidePolicyForNavigationAction: WKNavigationAction,
         decisionHandler: (WKNavigationActionPolicy) -> Unit,
     ) {
-        println("webView, decisionHandler: ${webView.URL} ${webView.loading}")
-        loginState(
+        onWebViewStateChanged(
             platformWebViewState.copy(
                 url = decidePolicyForNavigationAction.request.URL.toString(),
                 isLoading = webView.loading
@@ -74,7 +73,7 @@ class WKNavigationDelegate(
     }
 
     override fun webView(webView: WKWebView, didFinishNavigation: WKNavigation?) {
-        loginState(
+        onWebViewStateChanged(
             platformWebViewState.copy(
                 isLoading = false
             )
@@ -82,7 +81,7 @@ class WKNavigationDelegate(
     }
 
     override fun webView(webView: WKWebView, didFailNavigation: WKNavigation?, withError: NSError) {
-        loginState(
+        onWebViewStateChanged(
             platformWebViewState.copy(
                 isLoading = false
             )

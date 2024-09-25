@@ -7,7 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.bunjne.bbit.App
+import com.bunjne.bbit.ui.App
 import com.bunjne.bbit.ui.theme.BBitTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,9 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             App(
                 darkTheme = isSystemInDarkTheme(),
-                dynamicColor = false,
-                topSafeArea = 0f,
-                bottomSafeArea = 0f
+                dynamicColor = false
             )
         }
     }

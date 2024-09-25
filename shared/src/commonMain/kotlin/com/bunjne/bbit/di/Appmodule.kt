@@ -1,6 +1,6 @@
 package com.bunjne.bbit.di
 
-import com.bunjne.bbit.data.data_source.AuthDataStore
+import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.model.toBearerTokens
 import com.bunjne.bbit.data.remote.ApiEndpoints
 import com.bunjne.bbit.data.remote.HttpClientProvider
@@ -62,7 +62,7 @@ fun appModules() = listOf(
 )
 
 private fun HttpClientConfig<*>.setAuth(
-    authDataStore: AuthDataStore,
+    authPreferencesDataSource: AuthPreferencesDataSource,
     authRepository: AuthRepository
 ) {
     install(Auth) {
@@ -72,11 +72,11 @@ private fun HttpClientConfig<*>.setAuth(
                     authRepository.refreshToken {
                         markAsRefreshTokenRequest()
                     }.run {
-                        authDataStore.getAuthTokens().toBearerTokens()
+                        authPreferencesDataSource.getAuthTokens().toBearerTokens()
                     }
                 },
                 loadTokens = {
-                    authDataStore.getAuthTokens().toBearerTokens()
+                    authPreferencesDataSource.getAuthTokens().toBearerTokens()
                 },
                 sendWithoutRequestCallback = { true },
                 realm = null

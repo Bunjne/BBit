@@ -20,12 +20,6 @@ kotlin {
         }
     }
 
-    targets.withType(org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget::class.java).all {
-        binaries.withType(org.jetbrains.kotlin.gradle.plugin.mpp.Framework::class.java).all {
-            export(libs.mvvm.core)
-        }
-    }
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -33,6 +27,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
+            binaryOption("bundleId", "com.bunjne.bbit.shared")
         }
     }
 
@@ -43,28 +38,29 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                // Apply compose resources such as, string.xml
                 implementation(compose.components.resources)
+
                 implementation(libs.kotlinx.coroutines.core)
                 implementation(libs.napier)
                 implementation(libs.bundles.ktor.common)
                 implementation(libs.kotlinx.datetime)
-                implementation(libs.koin.core)
-                implementation(libs.koin.compose)
+                // DI
+                implementation(project.dependencies.platform(libs.koin.bom))
+                api(libs.koin.core)
+                implementation(libs.bundles.koin.compose)
                 implementation(libs.koin.test)
-                //put your multiplatform dependencies here
+                // Compose UI
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
                 implementation(compose.materialIconsExtended)
                 implementation(libs.accompanist.system.ui.controller)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
                 implementation(libs.kotlinx.coroutines.core)
-                api(libs.mvvm.compose)
-                api(libs.mvvm.core)
-                api(libs.mvvm.flow)
+                implementation(libs.lifecycle.viewmodel)
                 // Navigation
-                implementation(libs.bundles.voyager.common)
+                implementation(libs.navigation.compose)
                 // use api since the desktop app need to access the Cef to initialize it.
                 api(libs.compose.webview.multiplatform)
                 implementation(libs.multiplatform.settings)
@@ -91,9 +87,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.okhttp)
                 implementation(libs.sqldelight.android)
-                implementation(libs.koin.compose)
                 implementation(libs.koin.androidx.compose)
-                api(libs.mvvm.flow.compose)
             }
         }
         val iosX64Main by getting
@@ -105,13 +99,9 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             dependencies {
-                implementation(libs.koin.core)
                 implementation(libs.ktor.darwin)
                 implementation(libs.sqldelight.ios)
-                implementation(libs.mvvm.core)
-                implementation(libs.mvvm.flow)
                 implementation(libs.stately.isolate)
-//                implementation("co.touchlab:stately-iso-collections")
             }
         }
     }
@@ -125,9 +115,9 @@ compose.resources {
 
 android {
     namespace = "com.bunjne.bbit"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
     }
     buildFeatures {
         buildConfig = true

@@ -1,9 +1,10 @@
 package com.bunjne.bbit.ui.workspaceList
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.data.remote.model.WorkspaceDto
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
-import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,8 +20,18 @@ class WorkspaceListViewModel(
     private val _uiState = MutableStateFlow(WorkspacesUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
 
+    // Another option which depends on use cases
+    /*val uiState = _uiState.onStart {
+        fetchWorkspaceList()
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5000),
+        initialValue = WorkspacesUiState()
+    )*/
+
     private val _uiEvent by lazy { Channel<WorkspacesUiEvent>() }
     val uiEvent: Flow<WorkspacesUiEvent> by lazy { _uiEvent.receiveAsFlow() }
+
 
     init {
         fetchWorkspaceList()
