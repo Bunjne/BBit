@@ -3,8 +3,8 @@ package com.bunjne.bbit.ui.workspaceList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.DataState
-import com.bunjne.bbit.data.remote.model.WorkspaceDto
-import com.bunjne.bbit.domain.repository.WorkspaceRepository
+import com.bunjne.bbit.domain.model.Workspace
+import com.bunjne.bbit.domain.usecase.GetWorkspacesUseCase
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class WorkspaceListViewModel(
-    private val workspaceRepository: WorkspaceRepository
+    private val getWorkspaceUseCase: GetWorkspacesUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(WorkspacesUiState(isLoading = true))
@@ -39,7 +39,7 @@ class WorkspaceListViewModel(
 
     private fun fetchWorkspaceList() {
         viewModelScope.launch {
-            when (val response = workspaceRepository.getWorkspaces(1)) {
+            when (val response = getWorkspaceUseCase(1)) {
                 is DataState.Success -> {
                     _uiState.update {
                         it.copy(
@@ -68,7 +68,7 @@ class WorkspaceListViewModel(
         }
     }
 
-    private fun handleOnWorkspaceCLicked(workspace: WorkspaceDto) {
+    private fun handleOnWorkspaceCLicked(workspace: Workspace) {
         _uiState.update { state -> state.copy(selectedWorkspace = workspace) }
     }
 
