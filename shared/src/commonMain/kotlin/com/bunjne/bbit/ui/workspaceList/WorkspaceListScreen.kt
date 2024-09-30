@@ -30,7 +30,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
-import com.bunjne.bbit.data.remote.model.WorkspaceDto
+import com.bunjne.bbit.domain.model.Workspace
 import com.bunjne.bbit.resources.Res
 import com.bunjne.bbit.resources.general_cancel
 import com.bunjne.bbit.resources.general_ok
@@ -115,8 +115,8 @@ fun WorkspacesScreen(
 
     uiState.selectedWorkspace?.let {
         GeneralPopupDialog(
-            title = it.workspace.name,
-            message = it.workspace.slug,
+            title = it.name,
+            message = it.slug,
             positiveText = stringResource(Res.string.general_ok),
             negativeText = stringResource(Res.string.general_cancel),
             onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
@@ -136,7 +136,7 @@ fun WorkspacesScreen(
 
 @Composable
 fun WorkspaceList(
-    workspaceList: List<WorkspaceDto>,
+    workspaceList: List<Workspace>,
     onUiAction: (WorkspacesUiAction) -> Unit
 ) {
     LazyColumn(
@@ -147,16 +147,16 @@ fun WorkspaceList(
         items(
             items = workspaceList,
             key = {
-                it.workspace.uuid
+                it.uuid
             }
         ) {
-            WorkspaceItem(
-                modifier = Modifier,
-                workspace = it,
-                onCardClicked = { workspace ->
-                    onUiAction(WorkspacesUiAction.OnWorkspaceClicked(workspace))
-                }
-            )
+//            WorkspaceItem(
+//                modifier = Modifier,
+//                workspace = it,
+//                onCardClicked = { workspace ->
+//                    onUiAction(WorkspacesUiAction.OnWorkspaceClicked(workspace))
+//                }
+//            )
         }
     }
 }
@@ -164,13 +164,13 @@ fun WorkspaceList(
 @Composable
 fun WorkspaceItem(
     modifier: Modifier,
-    workspace: WorkspaceDto,
-    onCardClicked: (WorkspaceDto) -> Unit
+    workspace: Workspace,
+    onCardClicked: (Workspace) -> Unit
 ) {
     Card(
         modifier = modifier
             .semantics {
-                stateDescription = workspace.workspace.name
+                stateDescription = workspace.name
             },
         shape = RoundedCornerShape(8.dp),
         onClick = { onCardClicked(workspace) },
@@ -192,22 +192,22 @@ fun WorkspaceItem(
                     modifier = Modifier
                         .size(48.dp)
                         .padding(8.dp),
-                    model = workspace.workspace.links?.avatar?.href,
-                    contentDescription = "Workspace profile image ${workspace.workspace.uuid}",
+                    model = workspace.profileImage,
                     error = {
                         Text(
                             modifier = Modifier.wrapContentSize(),
                             textAlign = TextAlign.Center,
-                            text = workspace.workspace.name.first().uppercase(),
+                            text = workspace.name.first().uppercase(),
                             color = MaterialTheme.colorScheme.onSurface,
                             style = MaterialTheme.typography.titleLarge
                         )
-                    }
+                    },
+                    contentDescription = "Workspace profile image ${workspace.uuid}",
                 )
             }
 
             Text(
-                text = workspace.workspace.name,
+                text = workspace.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
