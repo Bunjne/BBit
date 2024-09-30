@@ -150,13 +150,13 @@ fun WorkspaceList(
                 it.uuid
             }
         ) {
-//            WorkspaceItem(
-//                modifier = Modifier,
-//                workspace = it,
-//                onCardClicked = { workspace ->
-//                    onUiAction(WorkspacesUiAction.OnWorkspaceClicked(workspace))
-//                }
-//            )
+            WorkspaceItem(
+                modifier = Modifier,
+                workspace = it,
+                onCardClicked = { workspace ->
+                    onUiAction(WorkspacesUiAction.OnWorkspaceClicked(workspace))
+                }
+            )
         }
     }
 }

@@ -50,10 +50,18 @@ kotlin {
                 api(libs.koin.core)
                 implementation(libs.bundles.koin.compose)
                 implementation(libs.koin.test)
+                //TODO Remove after uuid is added in Koin with a new version
+                // https://github.com/InsertKoinIO/koin/issues/2003
+                api("com.benasher44:uuid:0.8.4")
                 // Compose UI
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)
+                implementation(libs.adaptive)
+                implementation(libs.adaptive.layout)
+                implementation(libs.adaptive.navigation)
+                implementation(libs.material3.adaptive.navigation.suite)
+                implementation(libs.material3.windowSizeClass)
                 implementation(compose.materialIconsExtended)
                 implementation(libs.accompanist.system.ui.controller)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)

@@ -66,8 +66,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.runtimeCompose)
 
-    implementation(libs.androidx.compose.material.iconsExtended)
-    implementation(libs.androidx.compose.material3.windowSizeClass)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.foundation.layout)
