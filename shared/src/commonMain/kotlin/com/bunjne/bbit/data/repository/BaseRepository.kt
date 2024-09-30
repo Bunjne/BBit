@@ -5,7 +5,6 @@ import com.bunjne.bbit.data.DataState.Error
 import com.bunjne.bbit.data.DataState.Success
 import com.bunjne.bbit.data.remote.StatusCode.INTERNAL_ERROR
 import com.bunjne.bbit.data.remote.StatusCode.NO_INTERNET_ERROR
-import com.bunjne.bbit.data.remote.error.ApiException
 import io.github.aakira.napier.Napier
 import io.ktor.utils.io.errors.IOException
 
@@ -18,16 +17,11 @@ open class BaseRepository {
     ): DataState<Data> {
         return try {
             Success(onOnline())
-            /*if (true) { //TODO networkStateManager.isOnline()
-                DataState.Success(onOnline())
-            } else {
-                fallback()
-            }*/
-        } catch (apiException: ApiException) {
-            Error(
-                statusCode = apiException.error?.code ?: INTERNAL_ERROR,
-                message = apiException.error?.message
-            )
+//        } catch (apiException: ApiException) {
+//            Error(
+//                statusCode = apiException.error?.code ?: INTERNAL_ERROR,
+//                message = apiException.error?.message
+//            )
         } catch (timeoutException: IOException) {
             Napier.e("Debug: " +  timeoutException.message.toString())
             Error(statusCode = NO_INTERNET_ERROR, message = timeoutException.message)

@@ -9,6 +9,7 @@ import platform.UIKit.UIUserInterfaceStyle
 fun MainViewController() = ComposeUIViewController(
     configure = {
         KoinInitializer().init()
+        enforceStrictPlistSanityCheck = false
     }
 ) {
     val isDarkTheme =

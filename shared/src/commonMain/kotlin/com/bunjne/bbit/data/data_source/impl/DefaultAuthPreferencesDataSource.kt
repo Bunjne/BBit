@@ -38,7 +38,7 @@ class DefaultAuthPreferencesDataSource(
     }
 
     override suspend fun getAuthTokens(): AuthToken = AuthToken(
-        accessToken = accessToken.firstOrNull().orEmpty(),
-        refreshToken = refreshToken.firstOrNull().orEmpty()
+        accessToken = accessToken.firstOrNull(),
+        refreshToken = refreshToken.firstOrNull()
     )
 }

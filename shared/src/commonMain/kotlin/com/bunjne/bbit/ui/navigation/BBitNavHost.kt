@@ -13,14 +13,15 @@ fun BBitNavHost(
     startDestination: Any,
     onShowSnackBar: suspend (String, String?) -> Boolean,
 ) {
+    val navController = appState.navController
     NavHost(
         modifier = modifier,
-        navController = appState.navController,
+        navController = navController,
         startDestination = startDestination
     ) {
         loginScreen(
             onLoginSuccess = {
-                appState.navController.navigateToWorkspaces(
+                navController.navigateToWorkspaces(
                     navOptions = navOptions {
                         popUpTo(LoginRoute) {
                             inclusive = true
@@ -30,5 +31,6 @@ fun BBitNavHost(
             }
         )
         workspacesScreen()
+        moreScreen()
     }
 }
