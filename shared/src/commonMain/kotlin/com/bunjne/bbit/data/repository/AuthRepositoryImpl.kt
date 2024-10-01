@@ -4,7 +4,7 @@ import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.ApiConstants.ACCESS_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.ApiConstants.REFRESH_TOKEN_GRANT_TYPE
-import com.bunjne.bbit.data.remote.model.AuthDtoModel
+import com.bunjne.bbit.data.remote.model.AuthDto
 import com.bunjne.bbit.data.remote.service.LoginService
 import com.bunjne.bbit.domain.repository.AuthRepository
 import io.ktor.client.request.HttpRequestBuilder
@@ -20,7 +20,7 @@ class AuthRepositoryImpl(
 
     override fun getRefreshToken(): Flow<String?> = authPreferencesDataSource.refreshToken
 
-    override suspend fun signInWithClient(code: String): DataState<AuthDtoModel> = execute {
+    override suspend fun signInWithClient(code: String): DataState<AuthDto> = execute {
         api.getAccessToken(
             type = ACCESS_TOKEN_GRANT_TYPE,
             code = code
@@ -30,7 +30,7 @@ class AuthRepositoryImpl(
         }
     }
 
-    override suspend fun refreshToken(req: HttpRequestBuilder.() -> Unit): DataState<AuthDtoModel> =
+    override suspend fun refreshToken(req: HttpRequestBuilder.() -> Unit): DataState<AuthDto> =
         execute {
             api.refreshToken(
                 type = REFRESH_TOKEN_GRANT_TYPE,

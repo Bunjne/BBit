@@ -1,3 +1,6 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec
+import org.jetbrains.compose.internal.utils.getLocalProperty
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.multiplatform)
@@ -6,19 +9,17 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.sqldelight)
-//    alias(libs.plugins.buildKonfig)
+    alias(libs.plugins.buildKonfig)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
+    androidTarget()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     applyDefaultHierarchyTemplate()
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
-        }
-    }
 
     listOf(
         iosX64(),
@@ -45,14 +46,13 @@ kotlin {
                 implementation(libs.napier)
                 implementation(libs.bundles.ktor.common)
                 implementation(libs.kotlinx.datetime)
-                // DI
+                //TODO Remove after uuid is added in Koin with a new version
+                // https://github.com/InsertKoinIO/koin/issues/2003
+                api("com.benasher44:uuid:0.8.4")// DI
                 implementation(project.dependencies.platform(libs.koin.bom))
                 api(libs.koin.core)
                 implementation(libs.bundles.koin.compose)
                 implementation(libs.koin.test)
-                //TODO Remove after uuid is added in Koin with a new version
-                // https://github.com/InsertKoinIO/koin/issues/2003
-                api("com.benasher44:uuid:0.8.4")
                 // Compose UI
                 implementation(compose.runtime)
                 implementation(compose.foundation)
@@ -157,5 +157,37 @@ sqldelight {
         create("AppDatabase") {
             packageName.set("com.bunjne.bbit")
         }
+    }
+}
+
+buildkonfig {
+    packageName = "com.bunjne.bbit"
+
+    defaultConfigs {
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "BITBUCKET_CLIENT_ID",
+            value = System.getenv("SPACEX_URL") ?: getLocalProperty("BITBUCKET_CLIENT_ID")
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "BITBUCKET_CLIENT_KEY",
+            value = System.getenv("SPACEX_URL") ?: getLocalProperty("BITBUCKET_CLIENT_KEY")
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "BASE_URL",
+            value = System.getenv("BASE_URL") ?: property("BASE_URL").toString()
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "AUTH_BASE_URL",
+            value = System.getenv("AUTH_BASE_URL") ?: property("AUTH_BASE_URL").toString()
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "SPACEX_URL",
+            value = System.getenv("SPACEX_URL") ?: property("SPACEX_URL").toString()
+        )
     }
 }

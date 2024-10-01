@@ -14,18 +14,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.bunjne.bbit.data.remote.ApiConstants.AUTH_CALLBACK_URL_PREFIX
+import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_CLIENT_ID
+import com.bunjne.bbit.data.remote.ApiEndpoints.BASE_URL
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
 import com.bunjne.bbit.ui.components.PlatformWebView
 import com.bunjne.bbit.ui.components.PlatformWebViewState
 import io.github.aakira.napier.Napier
 
-private const val BASE_URL = "https://bitbucket.org/site/oauth2/"
-private const val BITBUCKET_CLIENT_ID = "***REMOVED***"
-
-private const val WEB_VIEW_URL =
+private val WEB_VIEW_URL =
     "${BASE_URL}authorize?client_id=${BITBUCKET_CLIENT_ID}&response_type=code"
-private const val AUTH_CALLBACK_URL_PREFIX = "***REMOVED***"
 
 @Composable
 internal fun LoginRoute(

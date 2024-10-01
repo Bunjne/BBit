@@ -50,22 +50,13 @@ android {
 dependencies {
     implementation(project(":shared"))
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.core.splashscreen)
 
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.android)
     implementation(libs.koin.compose)
+    implementation(libs.napier)
 
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.window.manager)
-    implementation(libs.androidx.profileinstaller)
-    implementation(libs.kotlinx.coroutines.guava)
-    implementation(libs.kotlinx.coroutines.android)
-
-    implementation(libs.androidx.lifecycle.runtimeCompose)
-
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.foundation.layout)
@@ -74,8 +65,4 @@ dependencies {
     implementation(libs.androidx.compose.runtime.tracing)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.ui.util)
-    implementation(libs.androidx.metrics)
-    implementation(libs.androidx.tracing.ktx)
-
-    implementation(libs.napier)
 }
