@@ -1,7 +1,7 @@
 package com.bunjne.bbit.data.remote.service
 
 import com.bunjne.bbit.data.remote.ApiConstants
-import com.bunjne.bbit.data.remote.model.AuthDtoModel
+import com.bunjne.bbit.data.remote.model.AuthDto
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.auth.providers.BasicAuthCredentials
@@ -16,13 +16,13 @@ interface LoginService {
     suspend fun getAccessToken(
         type: String,
         code: String
-    ): AuthDtoModel
+    ): AuthDto
 
     suspend fun refreshToken(
         type: String,
         token: String,
         req: HttpRequestBuilder.() -> Unit
-    ): AuthDtoModel
+    ): AuthDto
 }
 
 class LoginServiceImpl(
@@ -32,7 +32,7 @@ class LoginServiceImpl(
     override suspend fun getAccessToken(
         type: String,
         code: String
-    ): AuthDtoModel =
+    ): AuthDto =
         httpClient.post("access_token") {
             BasicAuthProvider(
                 credentials = {
@@ -53,7 +53,7 @@ class LoginServiceImpl(
         type: String,
         token: String,
         req: HttpRequestBuilder.() -> Unit
-    ): AuthDtoModel =
+    ): AuthDto =
         httpClient.post("access_token") {
             BasicAuthProvider(
                 credentials = {

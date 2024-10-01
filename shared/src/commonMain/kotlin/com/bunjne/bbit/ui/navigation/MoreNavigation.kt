@@ -5,9 +5,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
@@ -25,10 +26,15 @@ fun NavController.navigateToMore(navOptions: NavOptions? = null) =
 fun NavGraphBuilder.moreScreen() {
     animatedComposable<MoreRoute> {
         Box(
-            modifier = Modifier.fillMaxSize().background(Color.Blue)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
         ) {
-            Box(modifier = Modifier.fillMaxWidth().height(20.dp).background(Color.Red).align(
-                Alignment.BottomCenter))
+            Text(
+                modifier = Modifier.align(Alignment.Center),
+                text = "More Screen",
+                color = MaterialTheme.colorScheme.onBackground
+            )
         }
     }
 }
