@@ -23,7 +23,7 @@ object ApiConstants {
     const val REFRESH_TOKEN_GRANT_TYPE = "refresh_token"
     val BITBUCKET_CLIENT_ID = BuildKonfig.BITBUCKET_CLIENT_ID
     val BITBUCKET_CLIENT_KEY = BuildKonfig.BITBUCKET_CLIENT_KEY
-    const val AUTH_CALLBACK_URL_PREFIX = "***REMOVED***"
+    val BITBUCKET_AUTH_CALLBACK_URL = BuildKonfig.BITBUCKET_AUTH_CALLBACK_URL
 }
 
 object ApiEndpoints {

@@ -1,5 +1,4 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec
-import org.jetbrains.compose.internal.utils.getLocalProperty
 
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
@@ -167,27 +166,42 @@ buildkonfig {
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = "BITBUCKET_CLIENT_ID",
-            value = System.getenv("SPACEX_URL") ?: getLocalProperty("BITBUCKET_CLIENT_ID")
+            value = getEnvOrProperty("BITBUCKET_CLIENT_ID")
+
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = "BITBUCKET_CLIENT_KEY",
-            value = System.getenv("SPACEX_URL") ?: getLocalProperty("BITBUCKET_CLIENT_KEY")
+            value = getEnvOrProperty("BITBUCKET_CLIENT_KEY")
+        )
+        buildConfigField(
+            type = FieldSpec.Type.STRING,
+            name = "BITBUCKET_AUTH_CALLBACK_URL",
+            value = getEnvOrProperty("BITBUCKET_AUTH_CALLBACK_URL")
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = "BASE_URL",
-            value = System.getenv("BASE_URL") ?: property("BASE_URL").toString()
+            value = getEnvOrProperty("BASE_URL")
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = "AUTH_BASE_URL",
-            value = System.getenv("AUTH_BASE_URL") ?: property("AUTH_BASE_URL").toString()
+            value = getEnvOrProperty("AUTH_BASE_URL")
         )
         buildConfigField(
             type = FieldSpec.Type.STRING,
             name = "SPACEX_URL",
-            value = System.getenv("SPACEX_URL") ?: property("SPACEX_URL").toString()
+            value = getEnvOrProperty("SPACEX_URL")
         )
     }
 }
+
+/**
+ * This function gets the value of an environment variable or property respectively.
+ *
+ * Note: use [property] instead of [findProperty] to throw an exception if not found.
+ * @return an environment variable or property respectively.
+ * */
+private fun getEnvOrProperty(key: String): String? =
+    System.getenv(key) ?: (property(key) as? String)

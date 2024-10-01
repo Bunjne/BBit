@@ -14,7 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.bunjne.bbit.data.remote.ApiConstants.AUTH_CALLBACK_URL_PREFIX
+import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_AUTH_CALLBACK_URL
 import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_CLIENT_ID
 import com.bunjne.bbit.data.remote.ApiEndpoints.BASE_URL
 import com.bunjne.bbit.ui.components.ErrorPopup
@@ -54,7 +54,7 @@ fun LoginScreen(
         derivedStateOf {
             platformWebViewState.isLoading
                     || uiState.isLoading
-                    || (platformWebViewState.url?.contains(AUTH_CALLBACK_URL_PREFIX) == true)
+                    || (platformWebViewState.url?.contains(BITBUCKET_AUTH_CALLBACK_URL) == true)
         }
     }
 
@@ -77,7 +77,7 @@ fun LoginScreen(
                 Napier.d("PlatformWebView webViewState: $it")
                 platformWebViewState = it
                 platformWebViewState.url?.let { url ->
-                    if (url.contains(AUTH_CALLBACK_URL_PREFIX, true)) {
+                    if (url.contains(BITBUCKET_AUTH_CALLBACK_URL, true)) {
                         onLoginClicked(url.substringAfter("code="))
                     }
                 }
