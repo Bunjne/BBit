@@ -92,8 +92,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(libs.ktor.okhttp)
                 implementation(libs.sqldelight.android)
+                implementation(libs.ktor.okhttp)
                 implementation(libs.koin.androidx.compose)
             }
         }
@@ -106,9 +106,9 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             dependencies {
-                implementation(libs.ktor.darwin)
                 implementation(libs.sqldelight.ios)
                 implementation(libs.stately.isolate)
+                implementation(libs.ktor.darwin)
             }
         }
     }
