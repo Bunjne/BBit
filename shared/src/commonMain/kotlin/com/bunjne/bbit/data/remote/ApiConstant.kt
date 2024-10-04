@@ -4,6 +4,14 @@ import com.bunjne.bbit.BuildKonfig
 
 const val TIME_SECOND_MS = 1000L
 
+sealed interface Error
+sealed interface NetworkError : Error {
+    data object ConnectionTimeout : NetworkError
+    data object NoInternetConnection : NetworkError
+    data object ServerError : NetworkError
+    data object GeneralError : NetworkError
+}
+
 object StatusCode {
     const val SUCCESS = 200
     const val RESOURCE_NOT_FOUND = 404
@@ -15,6 +23,7 @@ object StatusCode {
     const val RESET_CONTENT = 205
     const val SERVER_ERROR = 500
     const val CACHE_NOT_FOUND = 504
+    const val REQUEST_TIMEOUT = 408
 }
 
 object ApiConstants {
