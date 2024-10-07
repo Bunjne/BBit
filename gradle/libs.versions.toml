@@ -114,4 +114,4 @@ buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig"
 
 [bundles]
 koin-compose = ['koin-compose', 'koin-compose-viewmodel', 'koin-compose-viewmodel-navigation']
-ktor-common = ['ktor-auth', 'ktor-cio', 'ktor-core', 'ktor-logging', 'ktor-serilization', 'ktor-negotiation']
+ktor-common = ['ktor-auth', 'ktor-core', 'ktor-logging', 'ktor-serilization', 'ktor-negotiation']

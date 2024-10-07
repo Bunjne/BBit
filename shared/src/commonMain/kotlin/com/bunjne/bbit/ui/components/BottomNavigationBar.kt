@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 fun BBitNavigationSuiteScaffold(
     navigationSuiteItems: NavigationSuiteScope.(NavigationSuiteItemColors) -> Unit,
     modifier: Modifier = Modifier,
-    layoutType: NavigationSuiteType,
+    navigationSuiteType: NavigationSuiteType,
     content: @Composable () -> Unit
 ) {
     val navigationSuiteItemColors = NavigationSuiteItemColors(
@@ -47,9 +47,10 @@ fun BBitNavigationSuiteScaffold(
         navigationSuiteItems = {
             navigationSuiteItems(navigationSuiteItemColors)
         },
-        layoutType = layoutType,
+        layoutType = navigationSuiteType,
         containerColor = Color.Transparent,
         navigationSuiteColors = NavigationSuiteDefaults.colors(
+            navigationBarContainerColor = NavigationDefaults.navigationContainerColor(),
             navigationBarContentColor = NavigationDefaults.navigationContentColor(),
             navigationRailContainerColor = Color.Transparent,
         ),
@@ -87,8 +88,11 @@ object NavigationDefaults {
     fun navigationContentColor() = MaterialTheme.colorScheme.onSurfaceVariant
 
     @Composable
-    fun navigationSelectedItemColor() = MaterialTheme.colorScheme.onPrimaryContainer
+    fun navigationSelectedItemColor() = MaterialTheme.colorScheme.primary
 
     @Composable
     fun navigationIndicatorColor() = MaterialTheme.colorScheme.primaryContainer
+
+    @Composable
+    fun navigationContainerColor() = MaterialTheme.colorScheme.background
 }
