@@ -7,8 +7,9 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.sqldelight)
     alias(libs.plugins.buildKonfig)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -82,6 +83,10 @@ kotlin {
                 implementation(libs.coil.compose)
                 implementation(libs.coil.mp)
                 implementation(libs.coil.network.ktor)
+
+                // Local data source
+                implementation(libs.androidx.room.runtime)
+                implementation(libs.androidx.sqlite.bundled)
             }
         }
         val commonTest by getting {
@@ -92,7 +97,6 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(libs.sqldelight.android)
                 implementation(libs.ktor.okhttp)
                 implementation(libs.koin.androidx.compose)
             }
@@ -106,12 +110,19 @@ kotlin {
             iosSimulatorArm64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             dependencies {
-                implementation(libs.sqldelight.ios)
                 implementation(libs.stately.isolate)
                 implementation(libs.ktor.darwin)
             }
         }
     }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    ksp(libs.androidx.room.complier)
 }
 
 compose.resources {
@@ -129,33 +140,9 @@ android {
     buildFeatures {
         buildConfig = true
     }
-
-//    flavorDimensions.add("variant")
-//    productFlavors {
-//        create("dev") {
-//            dimension = "variant"
-//            isDefault = true
-//        }
-//
-//        create("staging") {
-//            dimension = "variant"
-//        }
-//
-//        create("prod") {
-//            dimension = "variant"
-//        }
-//    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-}
-
-sqldelight {
-    databases {
-        create("AppDatabase") {
-            packageName.set("com.bunjne.bbit")
-        }
     }
 }
 
