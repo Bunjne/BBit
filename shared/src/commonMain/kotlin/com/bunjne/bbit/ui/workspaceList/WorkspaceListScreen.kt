@@ -30,7 +30,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
-import com.bunjne.bbit.domain.model.Workspace
+import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.resources.Res
 import com.bunjne.bbit.resources.general_cancel
 import com.bunjne.bbit.resources.general_ok

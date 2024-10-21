@@ -1,7 +1,7 @@
 package com.bunjne.bbit.ui.workspaceList
 
 import androidx.compose.runtime.Immutable
-import com.bunjne.bbit.domain.model.Workspace
+import com.bunjne.bbit.data.model.Workspace
 
 @Immutable
 data class WorkspacesUiState(

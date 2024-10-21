@@ -54,8 +54,8 @@ private fun appModule() = module {
 fun appModules() = listOf(
     appModule(),
     apiModule(),
-    dataModule(),
-    commonDataModule(),
+    localDataModule(),
+    commonLocalDataModule(),
     repositoryModule(),
     useCaseModule(),
     viewModelModule()

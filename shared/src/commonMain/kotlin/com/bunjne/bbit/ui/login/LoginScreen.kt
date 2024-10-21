@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -17,7 +18,6 @@ import androidx.compose.ui.Modifier
 import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_AUTH_CALLBACK_URL
 import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_CLIENT_ID
 import com.bunjne.bbit.data.remote.ApiEndpoints.AUTH_BASE_URL
-import com.bunjne.bbit.data.remote.ApiEndpoints.BASE_URL
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
 import com.bunjne.bbit.ui.components.PlatformWebView
