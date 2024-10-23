@@ -5,8 +5,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,10 +45,17 @@ fun ErrorPopup(
                 )
                 .padding(16.dp)
         ) {
-            Text(text = error)
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .sizeIn(maxHeight = 450.dp)
+                    .verticalScroll(state = rememberScrollState()),
+                text = error,
+            )
             TextButton(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .wrapContentHeight()
                     .padding(top = 20.dp)
                     .align(alignment = Alignment.CenterHorizontally),
                 onClick = {
@@ -58,8 +69,7 @@ fun ErrorPopup(
                 contentPadding = PaddingValues(12.dp)
             ) {
                 Text(
-                    modifier = Modifier
-                        .wrapContentSize(),
+                    modifier = Modifier.wrapContentSize(),
                     text = "Ok",
                     textAlign = TextAlign.Center
                 )

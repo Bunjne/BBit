@@ -98,7 +98,7 @@ fun WorkspacesScreen(
                 )
             }
 
-            if (uiState.error.isNullOrEmpty().not()) {
+            uiState.error?.let {
                 ErrorPopup(
                     error = uiState.error.toString(),
                     onDismiss = {
