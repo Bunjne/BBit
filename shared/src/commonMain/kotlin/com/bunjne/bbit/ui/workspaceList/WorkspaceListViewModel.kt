@@ -2,27 +2,30 @@ package com.bunjne.bbit.ui.workspaceList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bunjne.bbit.data.DataState
+import com.bunjne.bbit.data.Result
+import com.bunjne.bbit.data.asResult
 import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class WorkspaceListViewModel(
-    private val workspaceRepository: WorkspaceRepository
+    private val workspaceRepository: WorkspaceRepository,
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(WorkspacesUiState(isLoading = true))
+    private val _uiState = MutableStateFlow(WorkspacesUiState())
     val uiState = _uiState.asStateFlow()
 
     // Another option which depends on use cases
     /*val uiState = _uiState.onStart {
-        fetchWorkspaceList()
+        fetchWorkspaceList(true)
+        observeWorkspaceList()
     }.stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(5000),
@@ -32,29 +35,60 @@ class WorkspaceListViewModel(
     private val _uiEvent by lazy { Channel<WorkspacesUiEvent>() }
     val uiEvent: Flow<WorkspacesUiEvent> by lazy { _uiEvent.receiveAsFlow() }
 
+    private var currentWorkspacePage = 0
 
     init {
-        fetchWorkspaceList()
+        fetchWorkspaceList(true)
+        observeWorkspaceList()
     }
 
-    private fun fetchWorkspaceList() {
-        viewModelScope.launch {
-            when (val response = workspaceRepository.getWorkspaces(1)) {
-                is DataState.Success -> {
-                    _uiState.update {
-                        it.copy(
-                            isLoading = false,
-                            workspaceList = response.data
-                        )
-                    }
-                }
+    private fun fetchWorkspaceList(isRefresh: Boolean) {
+        if (isRefresh) {
+            currentWorkspacePage = 0
+        }
+        currentWorkspacePage += 1
 
-                is DataState.Error -> {
-                    _uiState.update {
-                        it.copy(isLoading = false, error = response.message)
+        viewModelScope.launch {
+            workspaceRepository.fetchWorkspaces(currentWorkspacePage)
+                .asResult()
+                .collectLatest { response ->
+                    when (response) {
+                        is Result.Loading -> _uiState.update { it.copy(isLoading = true) }
+                        is Result.Success -> _uiState.update {
+                            it.copy(isLoading = false)
+                        }
+
+                        is Result.Error -> _uiState.update {
+                            it.copy(
+                                isLoading = false,
+                                error = response.exception?.message
+                            )
+                        }
                     }
                 }
-            }
+        }
+    }
+
+    private fun observeWorkspaceList() {
+        viewModelScope.launch {
+            workspaceRepository.getWorkspaces()
+                .asResult()
+                .collectLatest { response ->
+                    when (response) {
+                        is Result.Loading -> {}
+                        is Result.Success -> _uiState.update {
+                            it.copy(
+                                workspaceList = response.data
+                            )
+                        }
+
+                        is Result.Error -> _uiState.update {
+                            it.copy(
+                                error = response.exception?.message
+                            )
+                        }
+                    }
+                }
         }
     }
 
@@ -64,7 +98,6 @@ class WorkspaceListViewModel(
             is WorkspacesUiAction.OnWorkspaceUnSelected -> ::handleOnWorkspaceUnSelected.invoke()
             is WorkspacesUiAction.OnErrorCanceled -> ::handleOnErrorCanceled.invoke()
             is WorkspacesUiAction.OnInfoClicked -> ::handleOnWorkspaceInfoClicked.invoke()
-
         }
     }
 

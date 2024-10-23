@@ -1,6 +1,6 @@
 package com.bunjne.bbit.data.repository
 
-import com.bunjne.bbit.data.DataState
+import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.ApiConstants.ACCESS_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.ApiConstants.REFRESH_TOKEN_GRANT_TYPE
@@ -20,7 +20,7 @@ class AuthRepositoryImpl(
 
     override fun getRefreshToken(): Flow<String?> = authPreferencesDataSource.refreshToken
 
-    override suspend fun signInWithClient(code: String): DataState<AuthDto> = execute {
+    override suspend fun signInWithClient(code: String): Result<AuthDto> = execute {
         api.getAccessToken(
             type = ACCESS_TOKEN_GRANT_TYPE,
             code = code
@@ -30,7 +30,7 @@ class AuthRepositoryImpl(
         }
     }
 
-    override suspend fun refreshToken(req: HttpRequestBuilder.() -> Unit): DataState<AuthDto> =
+    override suspend fun refreshToken(req: HttpRequestBuilder.() -> Unit): Result<AuthDto> =
         execute {
             api.refreshToken(
                 type = REFRESH_TOKEN_GRANT_TYPE,

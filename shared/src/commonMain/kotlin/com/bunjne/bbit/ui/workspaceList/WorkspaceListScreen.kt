@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -81,34 +80,31 @@ fun WorkspacesScreen(
                 },
             )
 
-        },
-        contentWindowInsets = WindowInsets(bottom = 0.dp)
+        }
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ) {
-            when {
-                uiState.isLoading -> {
-                    FullScreenLoadingDialog()
-                }
+            if (uiState.isLoading) {
+                FullScreenLoadingDialog()
+            }
 
-                uiState.workspaceList.isNotEmpty() -> {
-                    WorkspaceList(
-                        workspaceList = uiState.workspaceList,
-                        onUiAction = onUiAction
-                    )
-                }
+            if (uiState.workspaceList.isNotEmpty()) {
+                WorkspaceList(
+                    workspaceList = uiState.workspaceList,
+                    onUiAction = onUiAction
+                )
+            }
 
-                uiState.error.isNullOrEmpty().not() -> {
-                    ErrorPopup(
-                        error = uiState.error.toString(),
-                        onDismiss = {
-                            onUiAction(WorkspacesUiAction.OnErrorCanceled)
-                        }
-                    )
-                }
+            if (uiState.error.isNullOrEmpty().not()) {
+                ErrorPopup(
+                    error = uiState.error.toString(),
+                    onDismiss = {
+                        onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                    }
+                )
             }
         }
     }
