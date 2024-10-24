@@ -39,7 +39,7 @@ import com.bunjne.bbit.resources.workspaces_title
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
-import com.bunjne.bbit.ui.components.GeneralPopupDialog
+import com.bunjne.bbit.ui.components.PlatformPopupDialog
 import com.bunjne.bbit.ui.components.ToolbarActionType
 import org.jetbrains.compose.resources.stringResource
 
@@ -110,7 +110,7 @@ fun WorkspacesScreen(
     }
 
     uiState.selectedWorkspace?.let {
-        GeneralPopupDialog(
+        PlatformPopupDialog(
             title = it.name,
             message = it.slug,
             positiveText = stringResource(Res.string.general_ok),
@@ -121,7 +121,7 @@ fun WorkspacesScreen(
     }
 
     if (uiState.showInfoInDialog) {
-        GeneralPopupDialog(
+        PlatformPopupDialog(
             title = stringResource(Res.string.workspaces_dialog_title),
             message = stringResource(Res.string.workspaces_dialog_description),
             positiveText = stringResource(Res.string.general_ok),

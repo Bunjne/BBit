@@ -3,7 +3,7 @@ package com.bunjne.bbit.ui.components
 import androidx.compose.runtime.Composable
 
 @Composable
-expect fun GeneralPopupDialog(
+expect fun PlatformPopupDialog(
     title: String,
     message: String,
     positiveText: String,
