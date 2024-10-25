@@ -1,5 +1,6 @@
 package com.bunjne.bbit.data.repository
 
+import com.bunjne.bbit.braodcaster.NetworkManager
 import com.bunjne.bbit.data.DataState
 import com.bunjne.bbit.data.DataState.Error
 import com.bunjne.bbit.data.DataState.Success
@@ -11,14 +12,21 @@ import io.ktor.client.plugins.HttpRequestTimeoutException
 import io.ktor.utils.io.errors.IOException
 
 
-open class BaseRepository {
+open class BaseRepository(
+    private val networkManager: NetworkManager
+) {
 
     protected suspend fun <Data> execute(
         fallback: suspend () -> DataState<Data> = { Error(NO_INTERNET_ERROR) },
         onOnline: suspend () -> Data
     ): DataState<Data> {
         return try {
-            Success(onOnline())
+            val result = if (networkManager.isNetworkAvailable()) {
+                Success(onOnline())
+            } else {
+                Error(message = "Network is unavailable. Please check your internet connection.")
+            }
+            result
 //        } catch (apiException: ApiException) {
 //            Error(
 //                statusCode = apiException.error?.code ?: INTERNAL_ERROR,

@@ -100,15 +100,15 @@ fun WorkspacesScreen(
                         onUiAction = onUiAction
                     )
                 }
+            }
 
-                uiState.error.isNullOrEmpty().not() -> {
-                    ErrorPopup(
-                        error = uiState.error.toString(),
-                        onDismiss = {
-                            onUiAction(WorkspacesUiAction.OnErrorCanceled)
-                        }
-                    )
-                }
+            if (uiState.error.isNullOrEmpty().not()) {
+                ErrorPopup(
+                    error = uiState.error.toString(),
+                    onDismiss = {
+                        onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                    }
+                )
             }
         }
     }

@@ -16,6 +16,7 @@ plugins {
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.buildKonfig) apply false
     alias(libs.plugins.room) apply false
+    alias(libs.plugins.cocoapods) apply false
 }
 
 tasks.register("clean", Delete::class) {

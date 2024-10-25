@@ -9,7 +9,6 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 fun repositoryModule() = module{
-//    singleOf(::SpaceXRepositoryImpl) { bind<SpaceXRepository>() }
     singleOf(::AuthRepositoryImpl) { bind<AuthRepository>() }
     singleOf(::WorkspaceRepositoryImpl) { bind<WorkspaceRepository>() }
 }
