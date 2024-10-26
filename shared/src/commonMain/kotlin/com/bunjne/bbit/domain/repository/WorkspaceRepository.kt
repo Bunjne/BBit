@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface WorkspaceRepository {
 
-    suspend fun fetchWorkspaces(page: Int): Flow<Result<Any>>
+    fun fetchWorkspaces(page: Int): Flow<Result<Any>>
 
-    suspend fun getWorkspaces(): Flow<Result<List<Workspace>>>
+    fun getWorkspaces(): Flow<Result<List<Workspace>>>
 
     suspend fun clearAllWorkspaces()
 }

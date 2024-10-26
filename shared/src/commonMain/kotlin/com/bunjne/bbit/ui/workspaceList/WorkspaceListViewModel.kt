@@ -3,14 +3,15 @@ package com.bunjne.bbit.ui.workspaceList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.Result
-import com.bunjne.bbit.data.asResult
 import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
+import com.bunjne.bbit.ui.util.asUiText
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -50,10 +51,13 @@ class WorkspaceListViewModel(
 
         viewModelScope.launch {
             workspaceRepository.fetchWorkspaces(currentWorkspacePage)
-                .asResult()
+                .onStart {
+                    _uiState.update {
+                        it.copy(isLoading = true)
+                    }
+                }
                 .collectLatest { response ->
                     when (response) {
-                        is Result.Loading -> _uiState.update { it.copy(isLoading = true) }
                         is Result.Success -> _uiState.update {
                             it.copy(isLoading = false)
                         }
@@ -61,7 +65,7 @@ class WorkspaceListViewModel(
                         is Result.Error -> _uiState.update {
                             it.copy(
                                 isLoading = false,
-                                error = response.exception?.message
+                                error = response.error.asUiText()
                             )
                         }
                     }
@@ -72,10 +76,13 @@ class WorkspaceListViewModel(
     private fun observeWorkspaceList() {
         viewModelScope.launch {
             workspaceRepository.getWorkspaces()
-                .asResult()
+                .onStart {
+                    _uiState.update {
+                        it.copy(isLoading = true)
+                    }
+                }
                 .collectLatest { response ->
                     when (response) {
-                        is Result.Loading -> {}
                         is Result.Success -> _uiState.update {
                             it.copy(
                                 workspaceList = response.data
@@ -84,11 +91,12 @@ class WorkspaceListViewModel(
 
                         is Result.Error -> _uiState.update {
                             it.copy(
-                                error = response.exception?.message
+                                error = response.error.asUiText()
                             )
                         }
                     }
                 }
+
         }
     }
 

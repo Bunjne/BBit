@@ -63,9 +63,4 @@ class HttpClientProvider(
             }
         }
     }
-
-    fun HttpClient.validateResponse(): HttpClient {
-
-        return this
-    }
 }

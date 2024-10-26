@@ -98,9 +98,9 @@ fun WorkspacesScreen(
                 )
             }
 
-            uiState.error?.let {
+            uiState.error?.let { error ->
                 ErrorPopup(
-                    error = uiState.error.toString(),
+                    error = error.asString(),
                     onDismiss = {
                         onUiAction(WorkspacesUiAction.OnErrorCanceled)
                     }
