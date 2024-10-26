@@ -18,6 +18,7 @@ fun DataError.asUiText(): UiText = when (this) {
     DataError.Network.SERIALIZATION -> UiText.StringRes(Res.string.error_serialization)
     DataError.Network.INTERNAL -> UiText.StringRes(Res.string.error_internal)
     DataError.Local.DISK_FULL -> UiText.StringRes(Res.string.error_disk_full)
+    is DataError.NetworkError -> UiText.DynamicString(this.apiError.error.message) // Use error from API only
 }
 
 fun RootError.asUiText(): UiText = when (this) {

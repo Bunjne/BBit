@@ -1,4 +1,4 @@
-package com.bunjne.bbit.util.extension
+package com.bunjne.bbit.ui.util
 
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedContentTransitionScope

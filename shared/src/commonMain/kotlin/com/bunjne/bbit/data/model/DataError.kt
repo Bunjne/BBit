@@ -1,5 +1,7 @@
 package com.bunjne.bbit.data.model
 
+import com.bunjne.bbit.data.remote.error.ApiError
+
 sealed interface DataError : Error {
 
     enum class Network : DataError {
@@ -7,12 +9,14 @@ sealed interface DataError : Error {
         NO_INTERNET,
         SERVER_ERROR,
         SERIALIZATION,
-        INTERNAL,
+        INTERNAL
     }
 
     enum class Local : DataError {
         DISK_FULL
     }
+
+    data class NetworkError(val apiError: ApiError): DataError
 }
 
 sealed interface TestError : Error {
