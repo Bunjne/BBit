@@ -3,17 +3,14 @@ package com.bunjne.bbit.ui.navigation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
-import com.bunjne.bbit.util.extension.animatedComposable
+import com.bunjne.bbit.ui.util.animatedComposable
 import kotlinx.serialization.Serializable
 
 @Serializable

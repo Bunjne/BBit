@@ -2,8 +2,9 @@ package com.bunjne.bbit.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bunjne.bbit.data.DataState
+import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.domain.repository.AuthRepository
+import com.bunjne.bbit.ui.util.asUiText
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -25,23 +26,22 @@ class LoginViewModel(
 
     private fun signIn(code: String) {
         viewModelScope.launch {
-            _uiState.value = LoginUiState(
-                isLoading = true,
-            )
-            when (val loginResult = authRepository.signInWithClient(code)) {
-                is DataState.Success -> {
+            _uiState.value = LoginUiState(isLoading = true)
+
+            when (val response = authRepository.signInWithClient(code)) {
+                is Result.Success -> {
                     _uiState.value = LoginUiState(
                         isLoading = false,
                         isSuccess = true,
                     )
                 }
 
-                is DataState.Error -> {
+                is Result.Error -> {
                     _uiState.value =
                         LoginUiState(
                             isLoading = false,
                             isError = true,
-                            errorMessage = loginResult.message
+                            error = response.error.asUiText()
                         )
                 }
             }

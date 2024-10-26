@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_AUTH_CALLBACK_URL
 import com.bunjne.bbit.data.remote.ApiConstants.BITBUCKET_CLIENT_ID
 import com.bunjne.bbit.data.remote.ApiEndpoints.AUTH_BASE_URL
-import com.bunjne.bbit.data.remote.ApiEndpoints.BASE_URL
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
 import com.bunjne.bbit.ui.components.PlatformWebView
@@ -88,7 +87,7 @@ fun LoginScreen(
         if (uiState.isError) {
             ErrorPopup(
                 modifier = Modifier.wrapContentSize(),
-                error = uiState.errorMessage.toString(),
+                error = uiState.error?.asString().orEmpty(),
             )
         }
     }

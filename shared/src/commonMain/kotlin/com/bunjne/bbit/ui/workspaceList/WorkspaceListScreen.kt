@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,7 +29,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.SubcomposeAsyncImage
-import com.bunjne.bbit.domain.model.Workspace
+import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.resources.Res
 import com.bunjne.bbit.resources.general_cancel
 import com.bunjne.bbit.resources.general_ok
@@ -40,7 +39,7 @@ import com.bunjne.bbit.resources.workspaces_title
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
-import com.bunjne.bbit.ui.components.GeneralPopupDialog
+import com.bunjne.bbit.ui.components.PlatformPopupDialog
 import com.bunjne.bbit.ui.components.ToolbarActionType
 import org.jetbrains.compose.resources.stringResource
 
@@ -81,40 +80,37 @@ fun WorkspacesScreen(
                 },
             )
 
-        },
-        contentWindowInsets = WindowInsets(bottom = 0.dp)
+        }
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ) {
-            when {
-                uiState.isLoading -> {
-                    FullScreenLoadingDialog()
-                }
+            if (uiState.isLoading) {
+                FullScreenLoadingDialog()
+            }
 
-                uiState.workspaceList.isNotEmpty() -> {
-                    WorkspaceList(
-                        workspaceList = uiState.workspaceList,
-                        onUiAction = onUiAction
-                    )
-                }
+            if (uiState.workspaceList.isNotEmpty()) {
+                WorkspaceList(
+                    workspaceList = uiState.workspaceList,
+                    onUiAction = onUiAction
+                )
+            }
 
-                uiState.error.isNullOrEmpty().not() -> {
-                    ErrorPopup(
-                        error = uiState.error.toString(),
-                        onDismiss = {
-                            onUiAction(WorkspacesUiAction.OnErrorCanceled)
-                        }
-                    )
-                }
+            uiState.error?.let { error ->
+                ErrorPopup(
+                    error = error.asString(),
+                    onDismiss = {
+                        onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                    }
+                )
             }
         }
     }
 
     uiState.selectedWorkspace?.let {
-        GeneralPopupDialog(
+        PlatformPopupDialog(
             title = it.name,
             message = it.slug,
             positiveText = stringResource(Res.string.general_ok),
@@ -125,7 +121,7 @@ fun WorkspacesScreen(
     }
 
     if (uiState.showInfoInDialog) {
-        GeneralPopupDialog(
+        PlatformPopupDialog(
             title = stringResource(Res.string.workspaces_dialog_title),
             message = stringResource(Res.string.workspaces_dialog_description),
             positiveText = stringResource(Res.string.general_ok),

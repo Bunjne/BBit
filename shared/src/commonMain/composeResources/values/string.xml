@@ -6,4 +6,11 @@
     <string name="general_ok">Ok</string>
     <string name="general_cancel">Cancel</string>
     <string name="more_title">More</string>
+
+    <string name="error_internal">Something went wrong, please try again later.</string>
+    <string name="error_server">Service is unavailable, please try again later.</string>
+    <string name="error_no_internet">Please check your internet connection and try again.</string>
+    <string name="error_disk_full">Please check you storage and try again.</string>
+    <string name="error_request_timeout">There is no response from the server, please try again later.</string>
+    <string name="error_serialization">Something went wrong. Please check a serialization</string>
 </resources>

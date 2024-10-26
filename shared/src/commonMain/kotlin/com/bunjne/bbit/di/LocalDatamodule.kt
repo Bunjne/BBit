@@ -2,4 +2,4 @@ package com.bunjne.bbit.di
 
 import org.koin.core.module.Module
 
-expect fun dataModule(): Module
+expect fun localDataModule(): Module

@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.DialogProperties
 
 @Composable
-actual fun GeneralPopupDialog(
+actual fun PlatformPopupDialog(
     title: String,
     message: String,
     positiveText: String,
