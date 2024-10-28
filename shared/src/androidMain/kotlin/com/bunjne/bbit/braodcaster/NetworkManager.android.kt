@@ -9,13 +9,17 @@ import android.net.NetworkRequest
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.first
 
 class AndroidNetworkManager(private val context: Context) : NetworkManager {
 
-    private val _networkStatusFlow = MutableStateFlow(false)
-    override val networkStatusFlow = _networkStatusFlow.asStateFlow()
+    private val _networkStatusFlow: MutableSharedFlow<Boolean> = MutableSharedFlow(
+        replay = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
+    override val networkStatusFlow: SharedFlow<Boolean> = _networkStatusFlow.asSharedFlow()
 
     private val connectivityManager: ConnectivityManager by lazy {
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -59,14 +63,14 @@ class AndroidNetworkManager(private val context: Context) : NetworkManager {
     @SuppressLint("MissingPermission")
     override fun start() {
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
-        _networkStatusFlow.value = hasActiveNetwork()
+        _networkStatusFlow.tryEmit(hasActiveNetwork())
     }
 
     override fun stop() {
         connectivityManager.unregisterNetworkCallback(networkCallback)
     }
 
-    override suspend fun isNetworkAvailable(): Boolean = networkStatusFlow.replayCache.last()
+    override suspend fun isNetworkAvailable(): Boolean = networkStatusFlow.first()
 
     @SuppressLint("MissingPermission")
     private fun hasActiveNetwork() = connectivityManager.activeNetwork != null

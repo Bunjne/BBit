@@ -37,9 +37,12 @@ class WorkspaceListViewModel(
 
 
     init {
+        fetchWorkspaceList()
         viewModelScope.launch {
-            networkManager.networkStatusFlow.collectLatest {
-                fetchWorkspaceList()
+            networkManager.networkStatusFlow.collectLatest { hasNetwork ->
+                if (!uiState.value.error.isNullOrEmpty() && hasNetwork) {
+                    fetchWorkspaceList()
+                }
             }
         }
     }

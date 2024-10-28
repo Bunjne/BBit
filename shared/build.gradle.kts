@@ -124,10 +124,10 @@ kotlin {
 
     cocoapods {
         version = "1.0"
+        ios.deploymentTarget = "14.1"
 
-//        pod("Reachability") {
-//            version = "3.2"
-//        }
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
 }
 
