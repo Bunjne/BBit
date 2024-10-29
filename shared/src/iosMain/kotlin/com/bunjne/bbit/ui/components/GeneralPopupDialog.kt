@@ -10,7 +10,7 @@ import platform.UIKit.UIAlertControllerStyleAlert
 
 
 @Composable
-actual fun GeneralPopupDialog(
+actual fun PlatformPopupDialog(
     title: String,
     message: String,
     positiveText: String,

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -40,7 +39,7 @@ import com.bunjne.bbit.resources.workspaces_title
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
 import com.bunjne.bbit.ui.components.ErrorPopup
 import com.bunjne.bbit.ui.components.FullScreenLoadingDialog
-import com.bunjne.bbit.ui.components.GeneralPopupDialog
+import com.bunjne.bbit.ui.components.PlatformPopupDialog
 import com.bunjne.bbit.ui.components.ToolbarActionType
 import org.jetbrains.compose.resources.stringResource
 
@@ -81,19 +80,16 @@ fun WorkspacesScreen(
                 },
             )
 
-        },
-        contentWindowInsets = WindowInsets(bottom = 0.dp)
+        }
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ) {
-            when {
-                uiState.isLoading -> {
-                    FullScreenLoadingDialog()
-                }
 
+            when {
+                uiState.isLoading -> FullScreenLoadingDialog()
                 uiState.workspaceList.isNotEmpty() -> {
                     WorkspaceList(
                         workspaceList = uiState.workspaceList,
@@ -101,36 +97,36 @@ fun WorkspacesScreen(
                     )
                 }
             }
-
-            if (uiState.error.isNullOrEmpty().not()) {
-                ErrorPopup(
-                    error = uiState.error.toString(),
-                    onDismiss = {
-                        onUiAction(WorkspacesUiAction.OnErrorCanceled)
-                    }
-                )
-            }
         }
-    }
 
-    uiState.selectedWorkspace?.let {
-        GeneralPopupDialog(
-            title = it.name,
-            message = it.slug,
-            positiveText = stringResource(Res.string.general_ok),
-            negativeText = stringResource(Res.string.general_cancel),
-            onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
-            onDismissed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) }
-        )
-    }
+        uiState.error?.let { error ->
+            ErrorPopup(
+                error = error.asString(),
+                onDismiss = {
+                    onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                }
+            )
+        }
 
-    if (uiState.showInfoInDialog) {
-        GeneralPopupDialog(
-            title = stringResource(Res.string.workspaces_dialog_title),
-            message = stringResource(Res.string.workspaces_dialog_description),
-            positiveText = stringResource(Res.string.general_ok),
-            onConfirmed = { onUiAction(WorkspacesUiAction.OnInfoClicked) },
-        )
+        uiState.selectedWorkspace?.let {
+            PlatformPopupDialog(
+                title = it.name,
+                message = it.slug,
+                positiveText = stringResource(Res.string.general_ok),
+                negativeText = stringResource(Res.string.general_cancel),
+                onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
+                onDismissed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) }
+            )
+        }
+
+        if (uiState.showInfoInDialog) {
+            PlatformPopupDialog(
+                title = stringResource(Res.string.workspaces_dialog_title),
+                message = stringResource(Res.string.workspaces_dialog_description),
+                positiveText = stringResource(Res.string.general_ok),
+                onConfirmed = { onUiAction(WorkspacesUiAction.OnInfoClicked) },
+            )
+        }
     }
 }
 

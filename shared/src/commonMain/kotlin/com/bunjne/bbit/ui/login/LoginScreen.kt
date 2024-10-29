@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
@@ -88,7 +87,7 @@ fun LoginScreen(
         if (uiState.isError) {
             ErrorPopup(
                 modifier = Modifier.wrapContentSize(),
-                error = uiState.errorMessage.toString(),
+                error = uiState.error?.asString().orEmpty(),
             )
         }
     }

@@ -4,19 +4,24 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ApiException(
+data class ApiError(
     @SerialName("error") val error: ApiErrorBody,
     @SerialName("type") val type: String
 )
 
 @Serializable
 data class ApiErrorBody(
+    @SerialName("message") val message: String
+)
+
+/*@Serializable
+data class ApiErrorBody(
     @SerialName("data") val data: ApiErrorData,
     @SerialName("detail") val detail: String,
     @SerialName("fields") val fields: ApiErrorFields,
     @SerialName("id") val id: String,
     @SerialName("message") val message: String
-)
+)*/
 
 @Serializable
 data class ApiErrorData(

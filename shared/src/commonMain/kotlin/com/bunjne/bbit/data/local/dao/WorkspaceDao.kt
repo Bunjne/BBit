@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import com.bunjne.bbit.data.local.entity.WorkspaceEntity
+import kotlinx.coroutines.flow.Flow
 
 
 @Dao
@@ -12,5 +13,8 @@ interface WorkspaceDao {
     suspend fun insert(items: List<WorkspaceEntity>)
 
     @Query("SELECT * FROM WorkspaceEntity")
-    suspend fun getAllWorkspaces(): List<WorkspaceEntity>
+    fun getAllWorkspaces(): Flow<List<WorkspaceEntity>>
+
+    @Query("DELETE FROM WorkspaceEntity")
+    suspend fun clearAll()
 }

@@ -1,4 +1,4 @@
-package com.bunjne.bbit.util
+package com.bunjne.bbit.ui.util
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

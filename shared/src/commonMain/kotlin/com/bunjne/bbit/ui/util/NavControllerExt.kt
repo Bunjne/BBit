@@ -1,4 +1,4 @@
-package com.bunjne.bbit.util.extension
+package com.bunjne.bbit.ui.util
 
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController

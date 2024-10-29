@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import com.bunjne.bbit.ui.login.LoginRoute
-import com.bunjne.bbit.util.extension.animatedComposable
+import com.bunjne.bbit.ui.util.animatedComposable
 import kotlinx.serialization.Serializable
 import org.koin.compose.viewmodel.koinViewModel
 

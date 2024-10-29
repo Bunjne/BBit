@@ -30,6 +30,7 @@ private fun appModule() = module {
     single<HttpClient>(named(HttpClientType.BITBUCKET)) {
         HttpClientProvider(
             apiUrl = ApiEndpoints.BASE_URL,
+//            apiUrl = if (getPlatform() == Platform.ANDROID) "http://10.0.2.2:3008" else "http://127.0.0.1:3008",
             json = get(),
         ).init().config {
             setAuth(get(), get())
