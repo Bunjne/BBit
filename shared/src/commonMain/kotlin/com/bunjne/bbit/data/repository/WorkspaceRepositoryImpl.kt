@@ -1,5 +1,6 @@
 package com.bunjne.bbit.data.repository
 
+import com.bunjne.bbit.braodcaster.NetworkManager
 import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.data.local.dao.WorkspaceDao
 import com.bunjne.bbit.data.local.entity.toEntity
@@ -12,8 +13,9 @@ import kotlinx.coroutines.flow.map
 
 class WorkspaceRepositoryImpl(
     private val api: WorkspaceService,
-    private val workspaceDao: WorkspaceDao
-) : BaseRepository(), WorkspaceRepository {
+    private val workspaceDao: WorkspaceDao,
+    networkManager: NetworkManager
+) : BaseRepository(networkManager), WorkspaceRepository {
 
     override fun fetchWorkspaces(page: Int): Flow<Result<Any>> =
         networkFlow {

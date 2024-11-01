@@ -20,13 +20,19 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -45,6 +51,7 @@ import com.bunjne.bbit.ui.navigation.LoginRoute
 import com.bunjne.bbit.ui.navigation.TopLevelNavItem
 import com.bunjne.bbit.ui.navigation.WorkspacesRoute
 import com.bunjne.bbit.ui.theme.BBitTheme
+import com.bunjne.bbit.ui.util.LaunchDisposableEffect
 import okio.FileSystem
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.KoinContext
@@ -57,6 +64,7 @@ fun App(
     dynamicColor: Boolean,
 ) {
     KoinContext {
+        val lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
         val snackBarHostState = remember { SnackbarHostState() }
         val windowAdaptiveInfo: WindowAdaptiveInfo = currentWindowAdaptiveInfo()
 
@@ -85,6 +93,17 @@ fun App(
         setSingletonImageLoaderFactory { context ->
             getAsyncImageLoader(context)
         }
+
+        // Registering network connectivity manager
+        LaunchDisposableEffect(
+            onStart = {
+                viewModel.startNetworkManager()
+            },
+            onStop = {
+                viewModel.stopNetworkManager()
+            }
+        )
+
         BBitTheme(
             darkTheme = darkTheme,
             dynamicColor = dynamicColor
@@ -133,7 +152,7 @@ fun App(
                             .shadow(
                                 elevation = 4.dp,
                                 spotColor = MaterialTheme.colorScheme.onBackground,
-                                ambientColor =MaterialTheme.colorScheme.background
+                                ambientColor = MaterialTheme.colorScheme.background
                             )
                             .height(8.dp)
                     )

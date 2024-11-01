@@ -1,5 +1,6 @@
 package com.bunjne.bbit.data.repository
 
+import com.bunjne.bbit.braodcaster.NetworkManager
 import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.ApiConstants.ACCESS_TOKEN_GRANT_TYPE
@@ -13,8 +14,9 @@ import kotlinx.coroutines.flow.firstOrNull
 
 class AuthRepositoryImpl(
     private val api: LoginService,
-    private val authPreferencesDataSource: AuthPreferencesDataSource
-) : BaseRepository(), AuthRepository {
+    private val authPreferencesDataSource: AuthPreferencesDataSource,
+    networkManager: NetworkManager
+) : BaseRepository(networkManager), AuthRepository {
 
     override fun getAccessToken(): Flow<String?> = authPreferencesDataSource.accessToken
 

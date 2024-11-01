@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.buildKonfig)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.cocoapods)
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -114,6 +115,19 @@ kotlin {
                 implementation(libs.ktor.darwin)
             }
         }
+    }
+
+    compilerOptions {
+        // Common compiler options applied to all Kotlin source sets
+        freeCompilerArgs.add("-Xexpect-actual-classes")
+    }
+
+    cocoapods {
+        version = "1.0"
+        ios.deploymentTarget = "14.1"
+
+        xcodeConfigurationToNativeBuildType["CUSTOM_DEBUG"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.DEBUG
+        xcodeConfigurationToNativeBuildType["CUSTOM_RELEASE"] = org.jetbrains.kotlin.gradle.plugin.mpp.NativeBuildType.RELEASE
     }
 }
 

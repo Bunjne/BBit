@@ -87,46 +87,46 @@ fun WorkspacesScreen(
                 .fillMaxSize()
                 .padding(it)
         ) {
-            if (uiState.isLoading) {
-                FullScreenLoadingDialog()
-            }
 
-            if (uiState.workspaceList.isNotEmpty()) {
-                WorkspaceList(
-                    workspaceList = uiState.workspaceList,
-                    onUiAction = onUiAction
-                )
-            }
-
-            uiState.error?.let { error ->
-                ErrorPopup(
-                    error = error.asString(),
-                    onDismiss = {
-                        onUiAction(WorkspacesUiAction.OnErrorCanceled)
-                    }
-                )
+            when {
+                uiState.isLoading -> FullScreenLoadingDialog()
+                uiState.workspaceList.isNotEmpty() -> {
+                    WorkspaceList(
+                        workspaceList = uiState.workspaceList,
+                        onUiAction = onUiAction
+                    )
+                }
             }
         }
-    }
 
-    uiState.selectedWorkspace?.let {
-        PlatformPopupDialog(
-            title = it.name,
-            message = it.slug,
-            positiveText = stringResource(Res.string.general_ok),
-            negativeText = stringResource(Res.string.general_cancel),
-            onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
-            onDismissed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) }
-        )
-    }
+        uiState.error?.let { error ->
+            ErrorPopup(
+                error = error.asString(),
+                onDismiss = {
+                    onUiAction(WorkspacesUiAction.OnErrorCanceled)
+                }
+            )
+        }
 
-    if (uiState.showInfoInDialog) {
-        PlatformPopupDialog(
-            title = stringResource(Res.string.workspaces_dialog_title),
-            message = stringResource(Res.string.workspaces_dialog_description),
-            positiveText = stringResource(Res.string.general_ok),
-            onConfirmed = { onUiAction(WorkspacesUiAction.OnInfoClicked) },
-        )
+        uiState.selectedWorkspace?.let {
+            PlatformPopupDialog(
+                title = it.name,
+                message = it.slug,
+                positiveText = stringResource(Res.string.general_ok),
+                negativeText = stringResource(Res.string.general_cancel),
+                onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
+                onDismissed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) }
+            )
+        }
+
+        if (uiState.showInfoInDialog) {
+            PlatformPopupDialog(
+                title = stringResource(Res.string.workspaces_dialog_title),
+                message = stringResource(Res.string.workspaces_dialog_description),
+                positiveText = stringResource(Res.string.general_ok),
+                onConfirmed = { onUiAction(WorkspacesUiAction.OnInfoClicked) },
+            )
+        }
     }
 }
 

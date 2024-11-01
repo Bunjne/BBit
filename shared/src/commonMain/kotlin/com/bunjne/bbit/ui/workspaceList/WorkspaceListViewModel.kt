@@ -3,6 +3,7 @@ package com.bunjne.bbit.ui.workspaceList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bunjne.bbit.data.Result
+import com.bunjne.bbit.braodcaster.NetworkManager
 import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
 import com.bunjne.bbit.ui.util.asUiText
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 
 class WorkspaceListViewModel(
     private val workspaceRepository: WorkspaceRepository,
+    private val networkManager: NetworkManager
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(WorkspacesUiState())
@@ -41,6 +43,13 @@ class WorkspaceListViewModel(
     init {
         fetchWorkspaceList(true)
         observeWorkspaceList()
+        viewModelScope.launch {
+            networkManager.networkStatusFlow.collectLatest { hasNetwork ->
+                if (uiState.value.error != null && hasNetwork) {
+                    fetchWorkspaceList(true)
+                }
+            }
+        }
     }
 
     private fun fetchWorkspaceList(isRefresh: Boolean) {
