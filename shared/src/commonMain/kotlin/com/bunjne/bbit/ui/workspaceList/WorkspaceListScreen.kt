@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -35,6 +36,7 @@ import com.bunjne.bbit.resources.general_cancel
 import com.bunjne.bbit.resources.general_ok
 import com.bunjne.bbit.resources.workspaces_dialog_description
 import com.bunjne.bbit.resources.workspaces_dialog_title
+import com.bunjne.bbit.resources.workspaces_empty_list
 import com.bunjne.bbit.resources.workspaces_title
 import com.bunjne.bbit.ui.components.CustomToolbarScreen
 import com.bunjne.bbit.ui.components.ErrorPopup
@@ -62,7 +64,7 @@ fun WorkspacesRoute(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WorkspacesScreen(
+internal fun WorkspacesScreen(
     uiState: WorkspacesUiState,
     onUiAction: (WorkspacesUiAction) -> Unit
 ) {
@@ -79,7 +81,6 @@ fun WorkspacesScreen(
                     }
                 },
             )
-
         }
     ) {
         Box(
@@ -87,10 +88,9 @@ fun WorkspacesScreen(
                 .fillMaxSize()
                 .padding(it)
         ) {
-
             when {
                 uiState.isLoading -> FullScreenLoadingDialog()
-                uiState.workspaceList.isNotEmpty() -> {
+                else -> {
                     WorkspaceList(
                         workspaceList = uiState.workspaceList,
                         onUiAction = onUiAction
@@ -108,10 +108,10 @@ fun WorkspacesScreen(
             )
         }
 
-        uiState.selectedWorkspace?.let {
+        uiState.selectedWorkspace?.let { workspace ->
             PlatformPopupDialog(
-                title = it.name,
-                message = it.slug,
+                title = workspace.name,
+                message = workspace.slug,
                 positiveText = stringResource(Res.string.general_ok),
                 negativeText = stringResource(Res.string.general_cancel),
                 onConfirmed = { onUiAction(WorkspacesUiAction.OnWorkspaceUnSelected) },
@@ -131,10 +131,15 @@ fun WorkspacesScreen(
 }
 
 @Composable
-fun WorkspaceList(
+internal fun WorkspaceList(
     workspaceList: List<Workspace>,
     onUiAction: (WorkspacesUiAction) -> Unit
 ) {
+    if (workspaceList.isEmpty()) {
+        WorkspaceEmptyList()
+        return
+    }
+
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(horizontal = 20.dp, vertical = 16.dp),
@@ -158,7 +163,7 @@ fun WorkspaceList(
 }
 
 @Composable
-fun WorkspaceItem(
+private fun WorkspaceItem(
     modifier: Modifier,
     workspace: Workspace,
     onCardClicked: (Workspace) -> Unit
@@ -211,5 +216,19 @@ fun WorkspaceItem(
                 color = MaterialTheme.colorScheme.onPrimaryContainer,
             )
         }
+    }
+}
+
+@Composable
+private fun WorkspaceEmptyList() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = stringResource(Res.string.workspaces_empty_list),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onBackground
+        )
     }
 }

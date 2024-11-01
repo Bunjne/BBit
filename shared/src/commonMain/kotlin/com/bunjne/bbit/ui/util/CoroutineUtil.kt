@@ -22,7 +22,9 @@ fun <T> ObserveAsEvent(
     LaunchedEffect(lifecycleOwner.lifecycleScope, flow) {
         lifecycleOwner.repeatOnLifecycle(lifecycle) {
             withContext(dispatcher) {
-                flow.collect(eventMap::get)
+                flow.collect { event ->
+                    eventMap[event]?.invoke()
+                }
             }
         }
     }

@@ -14,4 +14,6 @@ interface AuthRepository {
     suspend fun signInWithClient(code: String): Result<AuthDto>
 
     suspend fun refreshToken(req: HttpRequestBuilder.() -> Unit): Result<AuthDto>
+
+    suspend fun clearAuthTokens()
 }

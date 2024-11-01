@@ -31,6 +31,16 @@ fun BBitNavHost(
             }
         )
         workspacesScreen()
-        moreScreen()
+        moreScreen(
+            onSignOutSuccess = {
+                navController.navigateToLogin(
+                    navOptions = navOptions {
+                        popUpTo(startDestination) {
+                            inclusive = true
+                        }
+                    }
+                )
+            }
+        )
     }
 }

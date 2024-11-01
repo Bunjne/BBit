@@ -2,8 +2,8 @@ package com.bunjne.bbit.ui.workspaceList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.braodcaster.NetworkManager
+import com.bunjne.bbit.data.Result
 import com.bunjne.bbit.data.model.Workspace
 import com.bunjne.bbit.domain.repository.WorkspaceRepository
 import com.bunjne.bbit.ui.util.asUiText
@@ -68,7 +68,10 @@ class WorkspaceListViewModel(
                 .collectLatest { response ->
                     when (response) {
                         is Result.Success -> _uiState.update {
-                            it.copy(isLoading = false)
+                            it.copy(
+                                isLoading = false,
+                                error = null
+                            )
                         }
 
                         is Result.Error -> _uiState.update {

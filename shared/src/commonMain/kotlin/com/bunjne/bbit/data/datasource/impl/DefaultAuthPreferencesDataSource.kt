@@ -1,10 +1,10 @@
-package com.bunjne.bbit.data.data_source.impl
+package com.bunjne.bbit.data.datasource.impl
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
+import com.bunjne.bbit.data.datasource.AuthPreferencesDataSource
 import com.bunjne.bbit.data.model.AuthToken
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
@@ -41,4 +41,11 @@ class DefaultAuthPreferencesDataSource(
         accessToken = accessToken.firstOrNull(),
         refreshToken = refreshToken.firstOrNull()
     )
+
+    override suspend fun clearAuthTokens() {
+        dataStore.edit {
+            it.remove(ACCESS_TOKEN_KEY)
+            it.remove(REFRESH_TOKEN_KEY)
+        }
+    }
 }

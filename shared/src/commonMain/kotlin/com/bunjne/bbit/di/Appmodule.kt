@@ -1,6 +1,6 @@
 package com.bunjne.bbit.di
 
-import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
+import com.bunjne.bbit.data.datasource.AuthPreferencesDataSource
 import com.bunjne.bbit.data.model.toBearerTokens
 import com.bunjne.bbit.data.remote.ApiEndpoints
 import com.bunjne.bbit.data.remote.HttpClientProvider

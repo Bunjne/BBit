@@ -1,4 +1,4 @@
-package com.bunjne.bbit.data.data_source
+package com.bunjne.bbit.data.datasource
 
 import com.bunjne.bbit.data.model.AuthToken
 import kotlinx.coroutines.flow.Flow
@@ -10,4 +10,5 @@ interface AuthPreferencesDataSource {
     suspend fun saveAccessToken(token: String)
     suspend fun saveRefreshToken(token: String)
     suspend fun getAuthTokens(): AuthToken
+    suspend fun clearAuthTokens()
 }

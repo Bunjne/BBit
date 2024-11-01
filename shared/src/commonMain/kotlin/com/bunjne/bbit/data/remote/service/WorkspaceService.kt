@@ -1,6 +1,6 @@
 package com.bunjne.bbit.data.remote.service
 
-import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
+import com.bunjne.bbit.data.datasource.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.model.WorkspaceResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

@@ -2,7 +2,7 @@ package com.bunjne.bbit.data.repository
 
 import com.bunjne.bbit.braodcaster.NetworkManager
 import com.bunjne.bbit.data.Result
-import com.bunjne.bbit.data.data_source.AuthPreferencesDataSource
+import com.bunjne.bbit.data.datasource.AuthPreferencesDataSource
 import com.bunjne.bbit.data.remote.ApiConstants.ACCESS_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.ApiConstants.REFRESH_TOKEN_GRANT_TYPE
 import com.bunjne.bbit.data.remote.model.AuthDto
@@ -43,4 +43,8 @@ class AuthRepositoryImpl(
                 authPreferencesDataSource.saveRefreshToken(it.refreshToken)
             }
         }
+
+    override suspend fun clearAuthTokens() {
+        authPreferencesDataSource.clearAuthTokens()
+    }
 }

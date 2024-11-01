@@ -3,9 +3,11 @@
     <string name="workspaces_title">Workspaces</string>
     <string name="workspaces_dialog_title">Workspace List Screen</string>
     <string name="workspaces_dialog_description">This is a example screen displaying the real information retrieving from Bitbucket API.</string>
+    <string name="workspaces_empty_list">There is no workspaces available.</string>
     <string name="general_ok">Ok</string>
     <string name="general_cancel">Cancel</string>
     <string name="more_title">More</string>
+    <string name="more_sign_out">Sign Out</string>">
 
     <string name="error_internal">Something went wrong, please try again later.</string>
     <string name="error_server">Service is unavailable, please try again later.</string>
